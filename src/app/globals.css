@@ -1,33 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    font-family: "Rubik", sans-serif;
+    transition: background-color 1.4s ease, color 1.4s ease;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+a {
+    text-decoration: none;
+    color: inherit;
 }
+
+ul {
+    padding: 0px;
+}
+
+.css-1xif2b4-MuiPopper-root-MuiDataGrid-menu .MuiDataGrid-menuList,
+.css-6hp17o-MuiList-root-MuiMenu-list,
+.css-1miuj5f-MuiDataGrid-panelWrapper,
+.css-1x51dt5-MuiInputBase-input-MuiInput-input .css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root,
+.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input .css-1x51dt5-MuiInputBase-input-MuiInput-input,
+.css-17zgp3j-MuiButtonBase-root-MuiButton-root,
+.css-1i1c21g-MuiButtonBase-root-MuiButton-root,
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+    color: inherit !important;
+    background-color: inherit !important;
+}
+
+.css-17zgp3j-MuiButtonBase-root-MuiButton-root {
+    margin: 0px 5px;
+}
+
+.css-5o1jad-MuiButtonBase-root-MuiMenuItem-root-MuiTablePagination-menuItem {
+    color: #000 !important
+}
+
+.no-spin-buttons input[type='number']::-webkit-outer-spin-button,
+.no-spin-buttons input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-spin-buttons input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.inputError {
+    color: #f44336
+}
+
+.navLinkCustomStyle {
+    width: 75%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 5px 0px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px;
+    gap: 20px;
+    transition: all 0.4s ease;
+    border-left-width: 2px;
+    border-left: 2px solid transparent;
+
+    &:hover {
+        background: #242b39;
+        color: #fff;
+    }
+}
+
+.active {
+    background: #242b39;
+    color: #fff;
+    border-left-width: 2px;
+    border-left: 5px solid #0090e7;
+}
+
+/* 
+xs, extra-small: 0px
+sm, small: 600px
+md, medium: 900px
+lg, large: 1200px
+xl, extra-large: 1536px 
+*/
