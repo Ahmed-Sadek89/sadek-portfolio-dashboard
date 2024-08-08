@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Layout from "@/components/Layout/Layout";
-import ThemeContextProvider from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
     title: "Ahmed Sadek | أْحْمَدْ صَادِقْ",
@@ -21,11 +20,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body suppressHydrationWarning={true}>
-                <ThemeContextProvider>
-                    <Layout>
-                        {children}
-                    </Layout>
-                </ThemeContextProvider>
+                <Layout>
+                    {children}
+                </Layout>
             </body>
         </html>
     );

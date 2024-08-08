@@ -15,7 +15,7 @@ export const userContents = {
 }
 
 export const userBackgroundBox = {
-    width: "calc(100%- 33.33%)",
+    width: "calc(100% - 33.33%)",
     bgcolor: "primary.main",
     height: "100%",
     borderRadius: "20px",

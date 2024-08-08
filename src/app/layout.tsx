@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
+import ThemeContextProvider from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   title: "Ahmed Sadek | أْحْمَدْ صَادِقْ",
@@ -32,7 +33,9 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #2299DD,0 0 5px #2299DD"
         />
-        {children}
+        <ThemeContextProvider>
+          {children}
+        </ThemeContextProvider>
       </body>
     </html>
   );
