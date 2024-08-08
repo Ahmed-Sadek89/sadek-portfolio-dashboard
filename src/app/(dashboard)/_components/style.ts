@@ -4,7 +4,8 @@ export const boxContainer = {
     borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
-    gap: "10px"
+    gap: "10px",
+    color: "text.primary"
 }
 
 export const cardNameStyle = {

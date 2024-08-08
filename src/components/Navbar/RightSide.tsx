@@ -8,8 +8,10 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { createNewProjectMain, menuLink, rightSideContainer } from './style';
 import Link from 'next/link';
+import { useThemeContext } from '@/context/ThemeContext';
 
 const RightSide = () => {
+    const { isDark, setIsDark } = useThemeContext()
     const theme = useTheme()
     const ismediumScreen = useMediaQuery(theme.breakpoints.up('md'));
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -18,25 +20,18 @@ const RightSide = () => {
             <Button sx={createNewProjectMain}>
                 + Create new projects
             </Button>
-            <LightModeIcon
-                sx={{ cursor: "pointer" }}
 
-            />
-            <DarkModeIcon
-                sx={{ cursor: "pointer" }}
-
-            />
-            {/* {
+            {
                 isDark ?
                     <LightModeIcon
                         sx={{ cursor: "pointer" }}
-
+                        onClick={() => setIsDark(prev => !prev)}
                     /> :
                     <DarkModeIcon
                         sx={{ cursor: "pointer" }}
-
+                        onClick={() => setIsDark(prev => !prev)}
                     />
-            } */}
+            }
 
             <IconButton size="medium" color="inherit">
                 <Badge badgeContent={4} color="error">

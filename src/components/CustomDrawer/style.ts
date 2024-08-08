@@ -5,7 +5,6 @@ export const drawerContainer = {
         width: 240,
         boxSizing: 'border-box',
         backgroundColor: "primary.main",
-
     },
 }
 

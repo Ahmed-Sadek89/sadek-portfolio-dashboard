@@ -1,7 +1,7 @@
 "use client"
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { boxContainer } from './home-style';
+import { boxContainer } from './style';
 import { Box, Grid } from '@mui/material';
 
 export default function HomeChart() {

@@ -1,6 +1,6 @@
 import { SvgIconComponent } from '@mui/icons-material'
 import { Box, Grid, Typography } from '@mui/material'
-import { boxContainer, cardNameStyle, iconLinkStyle, linkContainer } from './home-style'
+import { boxContainer, cardNameStyle, iconLinkStyle, linkContainer } from './style'
 import Link from 'next/link'
 
 type props = {
