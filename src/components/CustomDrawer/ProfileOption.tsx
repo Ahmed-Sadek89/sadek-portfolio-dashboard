@@ -7,6 +7,7 @@ import { logoutLinkStyle } from './style';
 
 const ProfileOption = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const theme = useTheme()
+    
     return (
         <>
             <Typography color='text.primary' padding={'10px'} fontWeight={"bold"}>Admin: </Typography>

@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { userRows, columns } from './_components/tableRowsAndColumns'
 import RemoveOverlay from './_components/RemoveOverlay'
-import { X } from '@/global/AnyTSX'
+import { X } from '../../../global/AnyTSX'
 import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGridTable'
 
 const Hotels = () => {

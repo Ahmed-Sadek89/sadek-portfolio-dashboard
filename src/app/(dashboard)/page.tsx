@@ -4,7 +4,7 @@ import RemoveOverlay from './_components/RemoveOverlay';
 import HomeChart from './_components/HomeChart';
 import HomeCards from './_components/HomeCards';
 import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGridTable';
-import { X } from '@/global/AnyTSX';
+import { X } from '../../global/AnyTSX';
 import { columns, userRows } from './_components/tableRowsAndColumns';
 
 const Home = () => {

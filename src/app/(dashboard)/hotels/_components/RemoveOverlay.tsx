@@ -1,6 +1,6 @@
 "use client"
 import { Box, Button, Typography } from '@mui/material'
-import { btnsGroupStyle, btnStyle, editOverlayContainer } from '@/global/OverlayStyles';
+import { btnsGroupStyle, btnStyle, editOverlayContainer } from '../../../../global/OverlayStyles';
 
 type props = {
     param: {
