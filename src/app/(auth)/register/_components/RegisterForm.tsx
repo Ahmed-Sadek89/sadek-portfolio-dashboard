@@ -1,12 +1,13 @@
 "use client"
 import { useState } from 'react';
-import { Box, Button, IconButton, InputBase, InputLabel } from '@mui/material'
+import { Box, Button, CircularProgress, IconButton, InputBase, InputLabel } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { initialRegisterValues, registerValidationSchema } from '../registerSchema';
 import { forgetPasswordLink, formContentStyle, inputContainerStyle, inputLabelStyle, inputStyle, passwordBoxContainer, passwordInputContainer, passwordLabelsStyle, submitBtn } from '../style';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { handleRegistration } from './handleRegistration';
 
 
 const RegisterForm = () => {
@@ -16,13 +17,15 @@ const RegisterForm = () => {
         setShowPassword(!showPassword);
     };
     const router = useRouter()
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("")
     return (
         <Formik
             initialValues={initialRegisterValues}
             validationSchema={registerValidationSchema}
-            onSubmit={(values) => {
-                console.log({ values })
-                router.push('/')
+
+            onSubmit={async (values) => {
+                handleRegistration({ values, setLoading, setError, router })
             }}
         >
             {({ errors, touched }) => (
@@ -87,10 +90,10 @@ const RegisterForm = () => {
                         </Box>
                         <ErrorMessage name="password" component="div" className='inputError' />
                     </Box>
-
-                    {/* <FormControlLabel control={<Checkbox defaultChecked color='info' />} label="Remember Me" /> */}
-
-                    <Button type="submit" sx={submitBtn} > Sign up </Button>
+                    <span className='text-red-600 text-center'>{error}</span>
+                    <Button type="submit" sx={submitBtn} disabled={loading}>
+                        {loading ? <CircularProgress size={15} thickness={4} /> : "Sign up"}
+                    </Button>
                 </Form>
             )}
         </Formik>

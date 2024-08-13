@@ -18,12 +18,10 @@ interface RegisterFormValues {
     username: string;
     email: string;
     password: string;
-    rememberMe: boolean;
 }
 
 export const initialRegisterValues: RegisterFormValues = {
     username: '',
     email: '',
     password: '',
-    rememberMe: false
 };

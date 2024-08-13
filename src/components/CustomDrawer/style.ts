@@ -1,6 +1,7 @@
 export const drawerContainer = {
     width: 240,
     flexShrink: 0,
+    position: "relative",
     '& .MuiDrawer-paper': {
         width: 240,
         boxSizing: 'border-box',
