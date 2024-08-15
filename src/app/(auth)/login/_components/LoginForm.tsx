@@ -4,6 +4,10 @@ import { Box, Button, IconButton, InputBase, InputLabel } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { forgetPasswordLink, formContentStyle, inputContainerStyle, inputLabelStyle, inputStyle, passwordBoxContainer, passwordInputContainer, passwordLabelsStyle, submitBtn } from '../style';
 import Link from 'next/link';
+import { login } from '@/actions';
+import { useFormState, useFormStatus } from 'react-dom';
+import ButtonSubmit from '@/components/ui/button-submit';
+import TextError from '@/components/ui/text-error';
 
 
 const LoginForm = () => {
@@ -12,14 +16,11 @@ const LoginForm = () => {
     const handleTogglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-    const loginAction = (formData: FormData) => {
-        const email = formData.get("email");
-        const password = formData.get("password");
-        console.log("aya")
-        console.log({ email, password })
-    }
+
+    const [state, formAction] = useFormState<any, FormData>(login, undefined);
+
     return (
-        <form style={{ ...formContentStyle, flexDirection: "column" }} action={loginAction}>
+        <form style={{ ...formContentStyle, flexDirection: "column" }} action={formAction}>
             <Box sx={inputContainerStyle}>
                 <InputLabel sx={inputLabelStyle}>
                     Email
@@ -54,8 +55,10 @@ const LoginForm = () => {
                 </Box>
             </Box>
 
-
-            <Button type="submit" sx={submitBtn} > Sign in </Button>
+            <TextError>{state ? state.error : ""}</TextError>
+            <ButtonSubmit btnStyle={submitBtn}>
+                Sign in
+            </ButtonSubmit>
         </form>
     )
 }

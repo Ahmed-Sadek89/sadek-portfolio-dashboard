@@ -57,4 +57,5 @@ export const createNewProjectMain = {
 export const menuLink = {
     cursor: 'pointer',
     padding: '20px 30px',
+    fontSize: "15px",
 }

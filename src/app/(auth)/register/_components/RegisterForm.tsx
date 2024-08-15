@@ -8,6 +8,7 @@ import { forgetPasswordLink, formContentStyle, inputContainerStyle, inputLabelSt
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { handleRegistration } from './handleRegistration';
+import TextError from '@/components/ui/text-error';
 
 
 const RegisterForm = () => {
@@ -90,7 +91,7 @@ const RegisterForm = () => {
                         </Box>
                         <ErrorMessage name="password" component="div" className='inputError' />
                     </Box>
-                    <span className='text-red-600 text-center'>{error}</span>
+                    <TextError>{error ? error : ""}</TextError>
                     <Button type="submit" sx={submitBtn} disabled={loading}>
                         {loading ? <CircularProgress size={15} thickness={4} /> : "Sign up"}
                     </Button>

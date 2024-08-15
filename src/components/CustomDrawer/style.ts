@@ -53,13 +53,17 @@ export const themeColor = {
 export const logoutLinkStyle = {
     display: "flex",
     alignItems: "center",
+    textTransform: "capitalize",
     gap: "10px",
     color: "#fff",
     width: "80%",
     margin: "10px 0px",
-    padding: "10px",
+    padding: "10px 0px",
     borderTopLeftRadius: "0px",
     borderBottomLeftRadius: "0px",
     borderTopRightRadius: "10px",
     borderBottomRightRadius: "10px",
+    ":hover": {
+        bgcolor: "none"
+    }
 }

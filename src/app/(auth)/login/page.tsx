@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 
 const Login = () => {
+    
     return (
         <Box sx={boxContainer}>
             <Image src={'/Logo.svg'} alt='logo' style={logoStyle} width={30} height={100} className='w-[10%] h-auto' />

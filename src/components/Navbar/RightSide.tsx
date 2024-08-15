@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { useTheme, Box, useMediaQuery, Button, IconButton, Badge, Menu } from "@mui/material";
+import { useTheme, Box, useMediaQuery, Button, IconButton, Badge, Menu, Typography } from "@mui/material";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -9,6 +9,9 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { createNewProjectMain, menuLink, rightSideContainer } from './style';
 import Link from 'next/link';
 import { useThemeContext } from '@/context/ThemeContext';
+import ButtonSubmit from '../ui/button-submit';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { logout } from '@/actions';
 
 const RightSide = () => {
     const { isDark, setIsDark } = useThemeContext()
@@ -74,22 +77,30 @@ const RightSide = () => {
                     sx: { padding: '0px', display: "flex", flexDirection: "column" }
                 }}
             >
-                {
-                    ['Profile', 'Logout'].map((setting) => (
-                        <Link
-                            key={setting}
-                            href={setting === "Profile" ? '/profile' : "#"}
-                            style={{
-                                ...menuLink,
-                                textAlign: 'center',
-                                backgroundColor: setting === "Profile" ? "transparent" : theme.palette.error.main,
-                                color: setting === "Profile" ? "#000" : "#fff"
-                            }}
-                        >
-                            {setting}
-                        </Link>
-                    ))
-                }
+                <Link
+                    href={'/profile'}
+                    style={{
+                        ...menuLink,
+                        textAlign: 'center',
+                        backgroundColor: "transparent",
+                        color: "#000"
+                    }}
+                >
+                    Profile
+                </Link>
+                <form action={logout}>
+                    <ButtonSubmit btnStyle={{
+                        ...menuLink,
+                        gap: "10px",
+                        textAlign: 'center',
+                        textTransform: "capitaize",
+                        backgroundColor: theme.palette.error.main,
+                        color: "#fff"
+                    }}>
+                        <ExitToAppIcon />
+                        <Typography variant='body2'>Logout</Typography>
+                    </ButtonSubmit>
+                </form>
             </Menu>
         </Box>
     )
