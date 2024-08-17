@@ -5,15 +5,9 @@ import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-// let username = "john";
-// let isPro = true;
-// let isBlocked = true;
 
 export const getSession = async () => {
     const session = await getIronSession<SessionData>(cookies(), sessionOptions);
-    // // CHECK THE USER IN THE DB
-    // session.isBlocked = isBlocked;
-    // session.isPro = isPro;
 
     return session;
 };
@@ -39,16 +33,16 @@ export const login = async (
             email, password
         })
     })
-    const user = await res.json()
+
+    const user = await res.json();
     if (user.status !== 200) {
-        return { error: user.message };
+        return { error: user.result };
     }
 
-    session.userId = user.awner.id
-    session.Authorization = user.awner.Authorization
+    session.userId = user.result.id
+    session.Authorization = user.result.Authorization
 
     await session.save();
-    console.log({ session })
     redirect("/");
 };
 
@@ -57,4 +51,3 @@ export const logout = async () => {
     session.destroy();
     redirect("/login");
 };
-
