@@ -23,6 +23,7 @@
     "nextjs-toploader": "^1.6.12",
     "react": "^18",
     "react-dom": "^18",
+    "sharp": "^0.33.5",
     "sonner": "^1.5.0",
     "yup": "^1.4.0",
     "zod": "^3.23.8"

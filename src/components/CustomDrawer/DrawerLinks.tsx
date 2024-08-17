@@ -1,27 +1,43 @@
 import { Box, Divider } from '@mui/material'
 import DrawerLink from './DrawerLink'
 import HomeIcon from '@mui/icons-material/Home';
-import GroupIcon from '@mui/icons-material/Group';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import NextPlanIcon from '@mui/icons-material/NextPlan';
-import HotelIcon from '@mui/icons-material/Hotel';
-import PaidIcon from '@mui/icons-material/Paid';
 import ThemeModeOptions from './ThemeModeOptions';
 import ProfileOption from './ProfileOption';
+import { getAwnerById } from '@/lib/getAwnerById';
+import { getPropsFromAwnerCounts } from '@/helpers/getPropsFromAwnerCounts';
+import { useEffect, useState } from 'react';
 
 
 type props = {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
 const DrawerLinks = ({ setOpen }: props) => {
+    const [awnerCounts, setAwnerCounts] = useState<PropsFromAwnerCounts>([])
+    useEffect(() => {
+        const getAwnerCounts = async () => {
+            const awnerById: awner = await getAwnerById();
+            const propsFromAwnerCount = getPropsFromAwnerCounts(awnerById)
+            setAwnerCounts(propsFromAwnerCount)
+        }
+        getAwnerCounts()
+    }, []);
+
     return (
         <Box sx={{ color: "text.secondary" }}>
-            <DrawerLink Icon={HomeIcon} text="home" setOpen={setOpen} />
-            <DrawerLink Icon={GroupIcon} text="users" setOpen={setOpen} />
-            <DrawerLink Icon={LocalOfferIcon} text="offers" setOpen={setOpen} />
-            <DrawerLink Icon={NextPlanIcon} text="plans" setOpen={setOpen} />
-            <DrawerLink Icon={HotelIcon} text="hotels" setOpen={setOpen} />
-            <DrawerLink Icon={PaidIcon} text="payments" setOpen={setOpen} />
+            <DrawerLink Icon={HomeIcon} text="home" route={'/'} setOpen={setOpen} />
+            {
+                awnerCounts && awnerCounts.map((key, index) => (
+                    <DrawerLink
+                        key={index}
+                        Icon={key.icon}
+                        text={key.name}
+                        route={key.route}
+                        setOpen={setOpen}
+                    />
+                ))
+            }
+            
             <Divider sx={{ my: "10px" }} />
             <ThemeModeOptions />
             <Divider sx={{ my: "10px" }} />

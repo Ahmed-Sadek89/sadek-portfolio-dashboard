@@ -1,5 +1,5 @@
-import { getSession } from "@/actions";
 import UserLayout from "@/components/UserLayout/UserLayout";
+import { getSession } from "@/lib/session";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation"
 

@@ -9,15 +9,16 @@ import { usePathname } from 'next/navigation';
 type props = {
     text: string,
     Icon: SvgIconComponent;
+    route: string,
     setOpen: React.Dispatch<React.SetStateAction<boolean>>,
 }
-const DrawerLink = ({ text, Icon, setOpen }: props) => {
+const DrawerLink = ({ text, Icon, route, setOpen }: props) => {
     const theme = useTheme();
     const ismediumScreen = useMediaQuery(theme.breakpoints.up('md'));
     const pathname = usePathname()
     return (
         <Link
-            href={text === "home" ? "/" : `/${text}`}
+            href={route}
             className={`${pathname === (text === "home" ? "/" : `/${text}`) ? "active navLinkCustomStyle" : "navLinkCustomStyle"}`}
             onClick={() => !ismediumScreen && setOpen(false)}
         >

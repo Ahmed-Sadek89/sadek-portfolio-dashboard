@@ -6,9 +6,10 @@ import Link from 'next/link'
 type props = {
     cardName: string,
     count: number,
+    route: string,
     Icon: SvgIconComponent
 }
-const HomeCard = ({ cardName, count, Icon }: props) => {
+const HomeCard = ({ cardName, count, route, Icon }: props) => {
     return (
         <Grid item xs={12} sm={6} md={4} >
             <Box boxShadow={7} sx={boxContainer}>
@@ -16,7 +17,7 @@ const HomeCard = ({ cardName, count, Icon }: props) => {
                     {cardName}
                 </Typography>
                 <Typography variant='h6' >{count}</Typography>
-                <Link href={`/${cardName}`} style={{ ...linkContainer, flexDirection: "row", }}>
+                <Link href={`/${route}`} style={{ ...linkContainer, flexDirection: "row", }}>
                     <Typography variant='body1' style={{ textDecoration: "underline" }}>
                         View all {cardName}
                     </Typography>

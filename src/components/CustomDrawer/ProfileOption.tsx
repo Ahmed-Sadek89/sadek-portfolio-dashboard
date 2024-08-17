@@ -12,7 +12,7 @@ const ProfileOption = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateActi
     return (
         <>
             <Typography color='text.primary' padding={'10px'} fontWeight={"bold"}>Admin: </Typography>
-            <DrawerLink Icon={AccountBoxIcon} text="profile" setOpen={setOpen} />
+            <DrawerLink Icon={AccountBoxIcon} text="profile" route={'/profile'} setOpen={setOpen} />
 
             <form action={logout}>
 

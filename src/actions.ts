@@ -1,16 +1,6 @@
 "use server";
-
-import { sessionOptions, SessionData } from "@/lib";
-import { getIronSession } from "iron-session";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
-
-export const getSession = async () => {
-    const session = await getIronSession<SessionData>(cookies(), sessionOptions);
-
-    return session;
-};
+import { getSession } from "./lib/session";
 
 export const login = async (
     prevState: {
@@ -24,26 +14,34 @@ export const login = async (
     const password = formData.get("password") as string;
 
     // CHECK USER IN THE DB
-    const res = await fetch(`${process.env.BACKEND_LINK}/awner/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email, password
+    try {
+        const res = await fetch(`${process.env.BACKEND_LINK}/awner/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            }),
+            cache: "force-cache"
         })
-    })
 
-    const user = await res.json();
-    if (user.status !== 200) {
-        return { error: user.result };
+        const user = await res.json();
+        if (user.status !== 200) {
+            return { error: user.result };
+        }
+
+        const { Authorization, ...others } = user.result
+        session.user = others
+        session.Authorization = user.result.Authorization
+
+        await session.save();
+        console.log({ session })
+        redirect("/");
+    } catch (error: any) {
+        console.log(error.message)
     }
-
-    session.userId = user.result.id
-    session.Authorization = user.result.Authorization
-
-    await session.save();
-    redirect("/");
 };
 
 export const logout = async () => {
