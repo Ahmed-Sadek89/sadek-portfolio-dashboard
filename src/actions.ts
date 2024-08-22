@@ -24,7 +24,6 @@ export const login = async (
                 email,
                 password
             }),
-            cache: "force-cache"
         })
 
         const user = await res.json();

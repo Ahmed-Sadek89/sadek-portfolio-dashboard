@@ -1,5 +1,6 @@
 "use server"
-import { getSession } from "./session"
+import { redirect } from "next/navigation";
+import { getSession } from "./session";
 
 export const getAwnerById = async () => {
     try {
@@ -9,16 +10,19 @@ export const getAwnerById = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `${session.Authorization}`
+                // "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImVtYWlsIjoiYS5zYWRlazg5QHlhaG9vLmNvbSIsImlhdCI6MTcyMzkyOTE0MywiZXhwIjoxNzI0MDE1NTQzfQ.nhRfBVf15wH01qE9TtRc6zrHvFefUCCmMK9Tiv8F01g`, // Use session token
             },
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {  // if there is a problem ((remove the session)) and ((redirect to '/login'))
+            console.log("JWT expired, redirecting to login...");
+            session.destroy()
+            redirect("/login");
         }
 
         const { awner } = await response.json();
-        return awner
+        return awner;
     } catch (error) {
         console.error("Failed to fetch awner data:", error);
     }
-}
+};
