@@ -28,7 +28,7 @@ const Home = async () => {
           />
         </Grid>
         <Grid item xs={12} lg={6}>
-          <FuturePlans plans={awnerById.FuturePlan}/>
+          <FuturePlans plans={awnerById?.FuturePlan || []}/>
         </Grid>
       </Grid>
       <CustomDataGridTable
