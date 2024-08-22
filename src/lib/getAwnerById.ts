@@ -10,19 +10,18 @@ export const getAwnerById = async () => {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `${session.Authorization}`
-                // "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImVtYWlsIjoiYS5zYWRlazg5QHlhaG9vLmNvbSIsImlhdCI6MTcyMzkyOTE0MywiZXhwIjoxNzI0MDE1NTQzfQ.nhRfBVf15wH01qE9TtRc6zrHvFefUCCmMK9Tiv8F01g`, // Use session token
+                // "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzEsImVtYWlsIjoiYS5zYWRlazg5QHlhaG9vLmNvbSIsImlhdCI6MTcyMzkyOTE0MywiZXhwIjoxNzI0MDE1NTQzfQ.nhRfBVf15wH01qE9TtRc6zrHvFefUCCmMK9Tiv8F01g`,
             },
         });
 
         if (!response.ok) {  // if there is a problem ((remove the session)) and ((redirect to '/login'))
-            console.log("JWT expired, redirecting to login...");
             session.destroy()
             redirect("/login");
         }
 
         const { awner } = await response.json();
         return awner;
-    } catch (error) {
-        console.error("Failed to fetch awner data:", error);
+    } catch (error: any) {
+        console.error("Failed to fetch awner data:", error.message);
     }
 };

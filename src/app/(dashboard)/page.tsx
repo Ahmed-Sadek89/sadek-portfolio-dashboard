@@ -8,6 +8,7 @@ import { X } from '../../global/AnyTSX';
 import { columns, userRows } from './_components/tableRowsAndColumns';
 import { getAwnerById } from '@/lib/getAwnerById';
 import { getPropsFromAwnerCounts } from '@/helpers/getPropsFromAwnerCounts';
+import FuturePlans from '@/components/FuturePlans/FuturePlans';
 
 const Home = async () => {
   const awnerById: awner = await getAwnerById();
@@ -27,14 +28,7 @@ const Home = async () => {
           />
         </Grid>
         <Grid item xs={12} lg={6}>
-          <CustomDataGridTable
-            userRows={userRows}
-            columns={columns}
-            pageName='home'
-            EditOverlay={EditOverlay}
-            AddOverlay={X}
-            RemoveOverlay={RemoveOverlay}
-          />
+          <FuturePlans plans={awnerById.FuturePlan}/>
         </Grid>
       </Grid>
       <CustomDataGridTable

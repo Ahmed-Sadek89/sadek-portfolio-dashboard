@@ -36,7 +36,7 @@ export const login = async (
         session.Authorization = user.result.Authorization
 
         await session.save();
-        console.log({ session })
+        // console.log({ session })
         redirect("/");
     } catch (error: any) {
         console.log(error.message)
