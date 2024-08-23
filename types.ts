@@ -104,8 +104,7 @@ type colorsSetting = {
 type futurePlan = {
     id: number;
     plan: string;
-    image: string;
-    is_new_in_dashboard: boolean;
+    is_completed: boolean;
     awner_id: number;
 }
 
