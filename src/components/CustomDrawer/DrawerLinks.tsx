@@ -6,6 +6,7 @@ import ProfileOption from './ProfileOption';
 import { getAwnerById } from '@/lib/getAwnerById';
 import { getPropsFromAwnerCounts } from '@/helpers/getPropsFromAwnerCounts';
 import { useEffect, useState } from 'react';
+import { awner, PropsFromAwnerCounts } from '@/types';
 
 
 type props = {

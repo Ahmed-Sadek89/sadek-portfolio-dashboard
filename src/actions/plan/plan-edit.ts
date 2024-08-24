@@ -18,7 +18,8 @@ export const editPlan = async (
                 "Authorization": `${session.Authorization}`
             },
             body: JSON.stringify({
-                is_completed: is_completed ? false : true
+                is_completed: is_completed ? false : true,
+                awner_id: session.user.id
             }),
         })
 

@@ -1,11 +1,10 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
 import { Box } from '@mui/material';
-import AddPlan from './_components/AddPlan';
-import Plans from './_components/Plans';
-import { futurePlan } from '@/types';
+import Activities from './_components/Activities';
+import { activity } from '@/types';
 
-const FuturePlan = ({ plans }: { plans: futurePlan[] | undefined }) => {
+const Activity = ({ activities }: { activities: activity[] | undefined }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const contentRef = useRef<HTMLElement>(null);
 
@@ -44,12 +43,11 @@ const FuturePlan = ({ plans }: { plans: futurePlan[] | undefined }) => {
                     transition: "box-shadow 0.3s ease-in-out",
                 }}
             >
-                <h2 className="font-bold text-xl">Future plans</h2>
-                <AddPlan />
+                <h2 className="font-bold text-xl">Activities</h2>
             </Box>
-            <Plans plans={plans || []} />
+            <Activities activities={activities || []} />
         </Box>
     );
 };
 
-export default FuturePlan;
+export default Activity;

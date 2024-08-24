@@ -9,6 +9,8 @@ import { columns, userRows } from './_components/tableRowsAndColumns';
 import { getAwnerById } from '@/lib/getAwnerById';
 import { getPropsFromAwnerCounts } from '@/helpers/getPropsFromAwnerCounts';
 import FuturePlans from '@/components/FuturePlans/FuturePlans';
+import Activity from '@/components/Activity/Activity';
+import { awner } from '@/types';
 
 const Home = async () => {
   const awnerById: awner = await getAwnerById();
@@ -18,17 +20,10 @@ const Home = async () => {
       <HomeCards propsFromAwnerCount={propsFromAwnerCount} />
       <Grid container spacing={2}>
         <Grid item xs={12} lg={6}>
-          <CustomDataGridTable
-            userRows={userRows}
-            columns={columns}
-            pageName='home'
-            EditOverlay={EditOverlay}
-            AddOverlay={X}
-            RemoveOverlay={RemoveOverlay}
-          />
+          <Activity activities={awnerById?.Activity || []} />
         </Grid>
         <Grid item xs={12} lg={6}>
-          <FuturePlans plans={awnerById?.FuturePlan || []}/>
+          <FuturePlans plans={awnerById?.FuturePlan || []} />
         </Grid>
       </Grid>
       <CustomDataGridTable

@@ -14,7 +14,10 @@ export const removePlan = async (
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `${session.Authorization}`
-            }
+            },
+            body: JSON.stringify({
+                awner_id: session.user.id
+            })
         })
 
         if (!response.ok) {  // if there is a problem ((remove the session)) and ((redirect to '/login'))

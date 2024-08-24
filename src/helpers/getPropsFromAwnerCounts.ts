@@ -10,6 +10,7 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 import NextPlanIcon from '@mui/icons-material/NextPlan';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import HistoryIcon from '@mui/icons-material/History';
+import { awner, PropsFromAwnerCounts } from '@/types';
 
 const iconMapping = {
     JobTitle: WorkIcon,

@@ -1,12 +1,13 @@
+import { ACTION, TABLE } from "@/enums";
 
-type PropsFromAwnerCounts = {
+export type PropsFromAwnerCounts = {
     name: string,
     count: string | number,
     route: string,
     icon: any
 }[];
 
-type awner = {
+export type awner = {
     id: number;
     name: string;
     email: string;
@@ -32,7 +33,7 @@ type awner = {
         Visitor: number
     }
 }
-type visitor = {
+export type visitor = {
     id: string;
     name: string;
     email: string;
@@ -40,7 +41,7 @@ type visitor = {
     login_by: string;
     awner_id: number;
 }
-type project = {
+export type project = {
     id: number;
     title: string;
     description: string | null;
@@ -53,47 +54,28 @@ type project = {
     category_project_id: number | null;
     awner_id: number;
 }
-enum Tabels {
-    FUTURE_PLANS,
-    LINK_TYPES,
-    LINKS,
-    PHONES,
-    JOB_TITLES,
-    COLOR_SETTINGS,
-    SKILLS,
-    CATEGORY_SKILLS,
-    PROJECTS,
-    MESSAGES,
-    CATEGORY_PROJECTS,
-    PROJECT_NOTES,
-    VISITORS,
-}
-enum ACTION {
-    CREATE,
-    UPDATE,
-    DELETE,
-    CLEAR
-}
 
-type activity = {
+
+
+export type activity = {
     id: number;
     action: ACTION;
-    table_name: Tabels;
+    table_name: TABLE;
     date: Date;
-    model: string;
+    table_name_id: string | null;
     awner_id: number;
 }
-type categoryProject = {
+export type categoryProject = {
     id: number;
     category_name: string;
     awner_id: number;
 }
-type categorySkill = {
+export type categorySkill = {
     id: number;
     category_name: string;
     awner_id: number;
 }
-type colorsSetting = {
+export type colorsSetting = {
     id: number;
     main_color: string;
     color1: string;
@@ -101,20 +83,20 @@ type colorsSetting = {
     awner_id: number;
 }
 
-type futurePlan = {
+export type futurePlan = {
     id: number;
     plan: string;
     is_completed: boolean;
     awner_id: number;
 }
 
-type jobTitle = {
+export type jobTitle = {
     id: number;
     title: string;
     awner_id: number;
 }
 
-type link = {
+export type link = {
     id: number;
     title: string;
     link: string;
@@ -123,12 +105,12 @@ type link = {
     awner_id: number;
 }
 
-type phone = {
+export type phone = {
     id: number;
     phone: string;
     awner_id: number;
 }
-type skills = {
+export type skills = {
     id: number;
     title: string;
     icon: string | null;
@@ -136,13 +118,13 @@ type skills = {
     awner_id: number;
 }
 
-type linkType = {
+export type linkType = {
     id: number;
     link_type: string;
     awner_id: number;
 }
 
-type message = {
+export type message = {
     id: number;
     subject: string;
     message: string;
@@ -150,7 +132,7 @@ type message = {
     awner_id: number;
 }
 
-type projectNote = {
+export type projectNote = {
     id: number;
     notes: string | null;
     project_id: number;

@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material'
 import HomeCard from './HomeCard'
+import { PropsFromAwnerCounts } from '@/types'
 
 type props = {
     propsFromAwnerCount: PropsFromAwnerCounts

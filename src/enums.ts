@@ -1,0 +1,24 @@
+export enum ACTION {
+    CREATE,
+    UPDATE,
+    DELETE,
+    LOGIN,
+    LOGOUT
+}
+
+export enum TABLE {
+    AWNER,
+    FUTURE_PLANS,
+    LINK_TYPES,
+    LINKS,
+    PHONES,
+    JOB_TITLES,
+    COLOR_SETTINGS,
+    SKILLS,
+    CATEGORY_SKILLS,
+    PROJECTS,
+    MESSAGES,
+    CATEGORY_PROJECTS,
+    PROJECT_NOTES,
+    VISITORS,
+}

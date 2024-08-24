@@ -16,7 +16,7 @@ const CheckPlan = ({ id, plan, is_completed }: { id: number, plan: string, is_co
     return (
         <form action={editPlan} ref={formRef}>
             <input type="hidden" name="id" value={id} />
-            <ButtonSubmit>
+            <ButtonSubmit btnStyle={{padding: "0px"}}>
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -35,7 +35,8 @@ const CheckPlan = ({ id, plan, is_completed }: { id: number, plan: string, is_co
                     sx={{
                         ".MuiFormControlLabel-label": {
                             color: is_completed ? "info.main" : "text.secondary",
-                            fontSize: "14px",
+                            fontSize: "12px",
+                            textTransform: "none"
                         },
                         "& .MuiCheckbox-root.Mui-checked + .MuiFormControlLabel-label": {
                             textDecoration: "line-through",
