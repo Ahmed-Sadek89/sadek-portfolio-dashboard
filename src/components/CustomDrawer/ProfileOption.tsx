@@ -3,8 +3,8 @@ import DrawerLink from './DrawerLink'
 import { Typography, useTheme } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { logoutLinkStyle } from './style';
-import { logout } from '@/actions';
 import ButtonSubmit from '../ui/button-submit';
+import { logout } from '@/actions/owner/owner-logout';
 
 const ProfileOption = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const theme = useTheme()

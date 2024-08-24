@@ -1,6 +1,6 @@
 "use server";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
-import { getSession } from "./lib/session";
 
 export const login = async (
     prevState: {
@@ -41,10 +41,4 @@ export const login = async (
     } catch (error: any) {
         console.log(error.message)
     }
-};
-
-export const logout = async () => {
-    const session = await getSession();
-    session.destroy();
-    redirect("/login");
 };

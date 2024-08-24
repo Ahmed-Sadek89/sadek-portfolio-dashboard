@@ -4,10 +4,10 @@ import { Box, IconButton, InputBase, InputLabel } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { forgetPasswordLink, formContentStyle, inputContainerStyle, inputLabelStyle, inputStyle, passwordBoxContainer, passwordInputContainer, passwordLabelsStyle, submitBtn } from '../style';
 import Link from 'next/link';
-import { login } from '@/actions';
 import { useFormState } from 'react-dom';
 import ButtonSubmit from '@/components/ui/button-submit';
 import TextError from '@/components/ui/text-error';
+import { login } from '@/actions/owner/owner-login';
 
 
 const LoginForm = () => {

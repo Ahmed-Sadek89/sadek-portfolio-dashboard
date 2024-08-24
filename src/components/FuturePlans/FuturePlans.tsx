@@ -15,7 +15,7 @@ const FuturePlans = ({ plans }: { plans: futurePlan[] | undefined }) => {
         >
             <h2 className="font-bold text-xl">Future plans</h2>
             <AddPlan />
-            <Plans />
+            <Plans plans={plans || []} />
         </Box>
     );
 };

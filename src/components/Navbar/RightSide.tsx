@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { useThemeContext } from '@/context/ThemeContext';
 import ButtonSubmit from '../ui/button-submit';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { logout } from '@/actions';
+import { logout } from '@/actions/owner/owner-logout';
 
 const RightSide = () => {
     const { isDark, setIsDark } = useThemeContext()

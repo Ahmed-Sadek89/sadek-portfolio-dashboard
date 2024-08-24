@@ -1,24 +1,21 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 
-const Plans = () => {
-    const plans = ["Create invoice",
-        "Meeting with Alita",
-        "Prepare for presentation",
-        "Plan weekend outing",
-        "Pick up kids from school",]
+const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
+
     return (
         <>
             {
                 plans ?
                     <div className="flex flex-col gap-2">
                         {
-                            plans.map((key, index) => (
+                            plans.map((plan, index) => (
                                 <div key={index} className={`flex py-2 flex-row justify-between items-center w-full border-b ${index !== plans.length - 1 ? "border-b-gray-500" : "border-b-transparent"}`}>
                                     <form action="">
                                         <FormControlLabel
                                             control={
                                                 <Checkbox
+                                                    checked={plan.is_completed || false}
                                                     size="small"
                                                     sx={{
                                                         "&.Mui-checked": {
@@ -26,7 +23,7 @@ const Plans = () => {
                                                         },
                                                     }}
                                                 />}
-                                            label={key}
+                                            label={plan.plan}
                                             sx={{
                                                 ".MuiFormControlLabel-label": {
                                                     color: "text.secondary",

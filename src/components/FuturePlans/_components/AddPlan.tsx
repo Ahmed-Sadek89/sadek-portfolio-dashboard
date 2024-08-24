@@ -1,33 +1,37 @@
-"use client"
-import React, { useRef } from 'react'
+"use client";
+import { postPlan } from '@/actions/plan/plan-add';
+import FormInput from '@/components/ui/form-input';
+import React, { useRef } from 'react';
 
 const AddPlan = () => {
-    const formRef = useRef<React.ElementRef<"form">>(null);
-    const inputRef = useRef<React.ElementRef<"input">>(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleAction = () => {
-        if (inputRef.current) {
+    const handleAction = async () => {
+        if (inputRef.current && inputRef.current.value.length !== 0) {
             const inputValue = inputRef.current.value;
-            console.log("Form action triggered with value:", inputValue);
+            await postPlan(inputValue)
+
             inputRef.current.value = "";
         }
     };
 
     const handleBlur = () => {
         if (formRef.current) {
-            handleAction();
+            formRef.current.requestSubmit()
         }
     };
+
     return (
         <form ref={formRef} action={handleAction}>
-            <input
+            <FormInput
                 ref={inputRef}
                 onBlur={handleBlur}
+                name='plan'
                 placeholder="Add your plans here..."
-                className="bg-transparent border border-[#2c2e33] rounded py-1 px-2 w-full focus:border-blue-900 outline-none"
             />
         </form>
-    )
-}
+    );
+};
 
-export default AddPlan
+export default AddPlan;
