@@ -13,7 +13,7 @@ const ActivityLogo = ({ action }: { action: ACTION }) => {
         <>
             {
                 action.toString() === "LOGIN" &&
-                <Box sx={{ bgcolor: 'warning.main', color: "#fff", ...sx }} >
+                <Box sx={{ bgcolor: 'custom.customSuccessText', color: "#fff", ...sx }} >
                     <LoginIcon />
                 </Box>
             }
@@ -33,6 +33,12 @@ const ActivityLogo = ({ action }: { action: ACTION }) => {
                 action.toString() === "DELETE" &&
                 <Box sx={{ bgcolor: 'error.main', color: "#fff", ...sx }} >
                     <DeleteForeverIcon />
+                </Box>
+            }
+            {
+                action.toString() === "LOGOUT" &&
+                <Box sx={{ bgcolor: 'custom.customErrorText', color: "#fff", ...sx }} >
+                    <LogoutIcon />
                 </Box>
             }
         </>

@@ -16,6 +16,10 @@ const ActivityText = ({ action, table_name, table_name_id }: props) => {
                 <Typography sx={sx}>You logged in!</Typography>
             }
             {
+                action.toString() === "LOGOUT" &&
+                <Typography sx={sx}>You logged out!</Typography>
+            }
+            {
                 action.toString() === "CREATE" &&
                 <Typography sx={sx}>You created a new <span className='lowercase'>{table_name}</span></Typography>
             }
