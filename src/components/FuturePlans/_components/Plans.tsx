@@ -1,5 +1,5 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
-import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import RemovePlan from "./RemovePlan";
 
 const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
 
@@ -7,10 +7,13 @@ const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
         <>
             {
                 plans ?
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2  px-5 pb-5">
                         {
                             plans.map((plan, index) => (
-                                <div key={index} className={`flex py-2 flex-row justify-between items-center w-full border-b ${index !== plans.length - 1 ? "border-b-gray-500" : "border-b-transparent"}`}>
+                                <div
+                                    key={index}
+                                    className={`flex py-2 flex-row justify-between items-center w-full border-b ${index !== plans.length - 1 ? "border-b-gray-500" : "border-b-transparent"}`}
+                                >
                                     <form action="">
                                         <FormControlLabel
                                             control={
@@ -26,7 +29,7 @@ const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
                                             label={plan.plan}
                                             sx={{
                                                 ".MuiFormControlLabel-label": {
-                                                    color: "text.secondary",
+                                                    color: plan.is_completed ? "info.main" : "text.secondary",
                                                     fontSize: "14px"
                                                 },
                                                 "& .MuiCheckbox-root.Mui-checked + .MuiFormControlLabel-label": {
@@ -35,9 +38,7 @@ const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
                                             }}
                                         />
                                     </form>
-                                    <form action="">
-                                        <DisabledByDefaultIcon fontSize="small" className="cursor-pointer" sx={{ color: "info.main" }} />
-                                    </form>
+                                    <RemovePlan id={plan.id} is_completed={plan.is_completed} />
                                 </div>
                             ))
                         }

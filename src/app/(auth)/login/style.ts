@@ -60,4 +60,4 @@ export const passwordInputContainer = {
     },
 }
 
-export const submitBtn = { width: '100%', color: '#fff', bgcolor: 'rgb(47 128 237)', ':hover': { bgcolor: 'rgb(47 128 237)' } }
+export const submitBtn = { width: '100%', color: '#fff', bgcolor: 'rgb(47 128 237)', padding: '6px 12px', ':hover': { bgcolor: 'rgb(47 128 237)' } }
