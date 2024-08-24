@@ -1,5 +1,5 @@
-import { Checkbox, FormControlLabel } from "@mui/material";
 import RemovePlan from "./RemovePlan";
+import CheckPlan from "./CheckPlan";
 
 const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
 
@@ -14,30 +14,7 @@ const Plans = ({ plans }: { plans: futurePlan[] | undefined }) => {
                                     key={index}
                                     className={`flex py-2 flex-row justify-between items-center w-full border-b ${index !== plans.length - 1 ? "border-b-gray-500" : "border-b-transparent"}`}
                                 >
-                                    <form action="">
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox
-                                                    checked={plan.is_completed || false}
-                                                    size="small"
-                                                    sx={{
-                                                        "&.Mui-checked": {
-                                                            color: "info.main",
-                                                        },
-                                                    }}
-                                                />}
-                                            label={plan.plan}
-                                            sx={{
-                                                ".MuiFormControlLabel-label": {
-                                                    color: plan.is_completed ? "info.main" : "text.secondary",
-                                                    fontSize: "14px"
-                                                },
-                                                "& .MuiCheckbox-root.Mui-checked + .MuiFormControlLabel-label": {
-                                                    textDecoration: "line-through",
-                                                },
-                                            }}
-                                        />
-                                    </form>
+                                    <CheckPlan id={plan.id} plan={plan.plan} is_completed={plan.is_completed} />
                                     <RemovePlan id={plan.id} is_completed={plan.is_completed} />
                                 </div>
                             ))
