@@ -1,17 +1,22 @@
+"use server"
 import { Box } from '@mui/material'
-import { columns, userRows } from './_components/tableRowsAndColumns'
+import { columns } from './_components/tableRowsAndColumns'
 import EditOverlay from './_components/EditOverlay'
 import AddOverlay from './_components/AddOverlay'
 import RemoveOverlay from './_components/RemoveOverlay'
 import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGridTable'
+import { getPhones } from '@/lib/getPhones'
+import { phoneWithoutAwnerId } from '@/types'
 
-const Plans = () => {
+const page = async () => {
+  const phones: phoneWithoutAwnerId[] = await getPhones();
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
       <CustomDataGridTable
-        userRows={userRows}
+        userRows={phones}
         columns={columns}
-        pageName='plans'
+        pageName='Phones'
         EditOverlay={EditOverlay}
         AddOverlay={AddOverlay}
         RemoveOverlay={RemoveOverlay}
@@ -20,4 +25,4 @@ const Plans = () => {
   )
 }
 
-export default Plans
+export default page

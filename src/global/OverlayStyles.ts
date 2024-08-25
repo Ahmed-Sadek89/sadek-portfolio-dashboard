@@ -37,15 +37,16 @@ export const btnsGroupStyle = {
     flexDirection: "row",
     gap: "10px",
     alignItems: "center",
-    justifyContent: "center",
-    flexWrap: "wrap"
+    justifyContent: "justify-between",
+    width: "100%"
 }
 
 export const btnStyle = {
     color: "#fff",
     display: "flex",
     alignItems: "center",
-    gap: "4px"
+    gap: "4px",
+    width: "100%"
 }
 
 export const datePickerStyle = {

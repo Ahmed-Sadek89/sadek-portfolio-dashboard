@@ -44,7 +44,7 @@ const CustomDataGridTable = ({ userRows, columns, pageName, EditOverlay, AddOver
 
     const filterRows = (text: string) => {
         const filteredRows = userRows.filter((row: any) =>
-            row.username.toLowerCase().includes(text.toLowerCase())
+            row.phone_number.toLowerCase().includes(text.toLowerCase())
         );
         setRows(filteredRows);
     };

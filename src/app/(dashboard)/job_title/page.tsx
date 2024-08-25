@@ -1,6 +1,5 @@
-import React from 'react'
 import { Box } from '@mui/material'
-import { userRows, columns } from './_components/tableRowsAndColumns'
+import { columns, userRows } from './_components/tableRowsAndColumns'
 import EditOverlay from './_components/EditOverlay'
 import AddOverlay from './_components/AddOverlay'
 import RemoveOverlay from './_components/RemoveOverlay'
@@ -12,7 +11,7 @@ const page = () => {
       <CustomDataGridTable
         userRows={userRows}
         columns={columns}
-        pageName='offers'
+        pageName='Job title'
         EditOverlay={EditOverlay}
         AddOverlay={AddOverlay}
         RemoveOverlay={RemoveOverlay}

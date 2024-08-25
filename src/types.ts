@@ -107,9 +107,12 @@ export type link = {
 
 export type phone = {
     id: number;
-    phone: string;
+    phone_number: string;
     awner_id: number;
 }
+
+export type phoneWithoutAwnerId = Omit<phone, 'awner_id'>;
+
 export type skills = {
     id: number;
     title: string;
