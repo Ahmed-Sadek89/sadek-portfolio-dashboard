@@ -1,15 +1,14 @@
 "use client"
+import { memo, useEffect } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import { btnsGroupStyle, btnStyle, editOverlayContainer, formStyle, textFiledStyle } from '../../../../global/OverlayStyles';
+import { btnsGroupStyle, btnStyle, editOverlayContainer, formStyle, textFiledStyle } from '@/global/OverlayStyles';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ButtonSubmit from '@/components/ui/button-submit';
 import { useFormState } from 'react-dom';
 import { postPhone } from '@/actions/phone/phone-add';
 import TextError from '@/components/ui/text-error';
-import { useEffect } from 'react';
-import { getPhones } from '@/lib/getPhones';
-
+import HandleCloseModal from '@/hooks/handle-close-modal';
 
 type props = {
     handleClose: () => void;
@@ -17,8 +16,8 @@ type props = {
 
 const AddOverlay = ({ handleClose }: props) => {
     const [state, formAction] = useFormState<any, FormData>(postPhone, undefined);
-    console.log({ state })
-    
+    HandleCloseModal(state, handleClose)
+
     return (
         <Box sx={editOverlayContainer}>
             <Typography variant="h6" component="h2">
@@ -36,7 +35,7 @@ const AddOverlay = ({ handleClose }: props) => {
                     />
                 </Box>
 
-                <TextError>{state ? state.error : ""}</TextError>
+                <TextError>{state ? state.status : ""}</TextError>
                 <Box sx={btnsGroupStyle}>
                     <ButtonSubmit
                         btnStyle={{ bgcolor: "success.main", ":hover": { bgcolor: "#00d25b" }, ...btnStyle }}
@@ -63,4 +62,4 @@ const AddOverlay = ({ handleClose }: props) => {
     );
 };
 
-export default AddOverlay;
+export default memo(AddOverlay);

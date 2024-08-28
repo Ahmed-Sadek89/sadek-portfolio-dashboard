@@ -1,6 +1,6 @@
 "use server"
 import { Box } from '@mui/material'
-import { columns } from './_components/tableRowsAndColumns'
+import { columns } from './_components/tableColumns'
 import EditOverlay from './_components/EditOverlay'
 import AddOverlay from './_components/AddOverlay'
 import RemoveOverlay from './_components/RemoveOverlay'
@@ -10,8 +10,6 @@ import { phoneWithoutAwnerId } from '@/types'
 
 const page = async () => {
   const phones: phoneWithoutAwnerId[] = await getPhones();
-  console.log({phones, count: phones.length})
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
       <CustomDataGridTable

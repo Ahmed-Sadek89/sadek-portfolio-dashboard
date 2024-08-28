@@ -16,10 +16,11 @@ const DrawerLink = ({ text, Icon, route, setOpen }: props) => {
     const theme = useTheme();
     const ismediumScreen = useMediaQuery(theme.breakpoints.up('md'));
     const pathname = usePathname()
+    
     return (
         <Link
             href={route}
-            className={`${pathname === (text === "home" ? "/" : `/${text}`) ? "active navLinkCustomStyle" : "navLinkCustomStyle"}`}
+            className={`${pathname === (text === "home" ? "/" : `/${route}`) ? "active navLinkCustomStyle" : "navLinkCustomStyle"}`}
             onClick={() => !ismediumScreen && setOpen(false)}
         >
             <ListItemIcon sx={ListItemIconStyle}>

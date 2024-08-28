@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 
 export const postPhone = async (
     prevState: {
-        error: undefined | string,
+        status: undefined | string,
     },
     formData: FormData,
 ) => {
@@ -32,10 +32,11 @@ export const postPhone = async (
         let result = await response.json();
 
         if (result.status !== 200) {
-            return { error: result.message };
+            return { status: result.message };
         }
         revalidatePath("/phone");
-        
+        return { status: "success" }
+
     } catch (error: any) {
         console.log({ error: error.message })
         return { error: error.message };

@@ -1,16 +1,10 @@
-import { Backdrop, Box, Button, Fade, Modal, useTheme } from '@mui/material'
+import { Backdrop, Box, Button, Fade, Modal } from '@mui/material'
 import React from 'react'
 import { EditOvelayStyle } from './style';
-import { usePathname } from 'next/navigation';
 
 type props = {
     param: {
         id: number;
-        username: string;
-        img: string;
-        status: string;
-        email: string;
-        age: number;
     },
     EditOverlay: ({ param, handleClose }: any) => JSX.Element | JSX.Element
     RemoveOverlay: ({ param, handleClose }: any) => JSX.Element
