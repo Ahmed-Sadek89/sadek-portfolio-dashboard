@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DataGrid, GridRenderCellParams, GridColDef, GridRenderPaginationProps, GridCallbackDetails } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 import { boxContainer } from './style';
@@ -7,7 +7,6 @@ import CustomPagination from './CustomPagination';
 import FirstRow from './FirstRow';
 import SecondRow from './SecondRow';
 import TableButtonControl from './TableButtonControl'
-
 
 type props = {
     userRows: any,
@@ -19,7 +18,12 @@ type props = {
 }
 
 const CustomDataGridTable = ({ userRows, columns, pageName, EditOverlay, AddOverlay, RemoveOverlay }: props) => {
-    const [rows, setRows] = useState(userRows)
+    const [rows, setRows] = useState([]);
+
+    useEffect(() => {
+        setRows(userRows)
+    }, [userRows]);
+
     const actionColumn: GridColDef[] = [
         {
             field: 'action', headerName: 'Action', width: 200, disableColumnMenu: true,
@@ -43,9 +47,11 @@ const CustomDataGridTable = ({ userRows, columns, pageName, EditOverlay, AddOver
     };
 
     const filterRows = (text: string) => {
-        const filteredRows = userRows.filter((row: any) =>
-            row.phone_number.toLowerCase().includes(text.toLowerCase())
-        );
+        const filteredRows = userRows.filter((row: any) => {
+            return Object.values(row).some((value: any) =>
+                value.toString().toLowerCase().includes(text.toLowerCase())
+            );
+        });
         setRows(filteredRows);
     };
     const [pageSize, setPageSize] = useState<number>(pageName === 'home' ? 5 : 10);

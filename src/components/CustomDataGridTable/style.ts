@@ -43,12 +43,7 @@ export const btnCreateNew = {
         background: "#00d25b",
     },
 }
-export const linkCreateNew = {
-    fontWeight: "bold", 
-    padding: "8px", 
-    borderRadius: "5px", 
-    color: "#fff"
-}
+
 
 export const boxSecondRowContainer = {
     display: "flex",
@@ -132,8 +127,4 @@ export const EditOvelayStyle = {
     boxShadow: 24,
     borderRadius: "10px",
     padding: 3
-}
-
-export const editLink = {
-    minWidth: "64px", padding: "6px 8px",
 }

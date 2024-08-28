@@ -10,13 +10,14 @@ import { phoneWithoutAwnerId } from '@/types'
 
 const page = async () => {
   const phones: phoneWithoutAwnerId[] = await getPhones();
+  console.log({phones, count: phones.length})
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
       <CustomDataGridTable
         userRows={phones}
         columns={columns}
-        pageName='Phones'
+        pageName='phone'
         EditOverlay={EditOverlay}
         AddOverlay={AddOverlay}
         RemoveOverlay={RemoveOverlay}

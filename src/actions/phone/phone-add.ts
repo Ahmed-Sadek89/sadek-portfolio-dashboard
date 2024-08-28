@@ -6,7 +6,7 @@ export const postPhone = async (
     prevState: {
         error: undefined | string,
     },
-    formData: FormData
+    formData: FormData,
 ) => {
 
     const session = await getSession();

@@ -1,7 +1,6 @@
 import { Backdrop, Box, Button, Fade, Modal, useTheme } from '@mui/material'
 import React from 'react'
-import { editLink, EditOvelayStyle } from './style';
-import Link from 'next/link';
+import { EditOvelayStyle } from './style';
 import { usePathname } from 'next/navigation';
 
 type props = {
@@ -18,8 +17,6 @@ type props = {
 }
 
 const TableButtonControl = ({ param, EditOverlay, RemoveOverlay }: props) => {
-    const theme = useTheme()
-    const pathname = usePathname();
     const [openEdit, setOpenEdit] = React.useState(false);
     const handleOpenEdit = () => setOpenEdit(true)
     const handleCloseEdit = () => setOpenEdit(false);
@@ -30,36 +27,26 @@ const TableButtonControl = ({ param, EditOverlay, RemoveOverlay }: props) => {
 
     return (
         <Box>
-            {
-                pathname === '/hotels' ?
-                    <Link
-                        style={{ color: theme.palette.info.main, textTransform: "uppercase", ...editLink }}
-                        href={`/hotels/edit/${param.id}`}
-                        // state={param}
-                    >Edit</Link>
-                    :
-                    <>
-                        <Button color='info' onClick={handleOpenEdit} sx={{ ":hover": { bgcolor: "transparent" } }} >
-                            Edit
-                        </Button>
-                        <Modal
-                            open={openEdit}
-                            closeAfterTransition
-                            slots={{ backdrop: Backdrop }}
-                            slotProps={{
-                                backdrop: {
-                                    timeout: 500,
-                                },
-                            }}
-                        >
-                            <Fade in={openEdit}>
-                                <Box sx={EditOvelayStyle}>
-                                    <EditOverlay param={param} handleClose={handleCloseEdit} />
-                                </Box>
-                            </Fade>
-                        </Modal>
-                    </>
-            }
+
+            <Button color='info' onClick={handleOpenEdit} sx={{ ":hover": { bgcolor: "transparent" } }} >
+                Edit
+            </Button>
+            <Modal
+                open={openEdit}
+                closeAfterTransition
+                slots={{ backdrop: Backdrop }}
+                slotProps={{
+                    backdrop: {
+                        timeout: 500,
+                    },
+                }}
+            >
+                <Fade in={openEdit}>
+                    <Box sx={EditOvelayStyle}>
+                        <EditOverlay param={param} handleClose={handleCloseEdit} />
+                    </Box>
+                </Fade>
+            </Modal>
             <Button
                 color='error'
                 sx={{ ":hover": { bgcolor: "transparent" } }}
