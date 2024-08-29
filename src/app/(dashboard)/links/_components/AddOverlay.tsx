@@ -6,34 +6,34 @@ import { useFormState } from 'react-dom';
 import TextError from '@/components/ui/text-error';
 import HandleCloseModal from '@/hooks/handle-close-modal';
 import AddOverlayBtns from '@/components/AddOverlayBtns/AddOverlayBtns';
-import { postLinkType } from '@/actions/linkType/linkType-add';
+import { postJobTitle } from '@/actions/jobTitle/jobTitle-add';
 
 type props = {
     handleClose: () => void;
 };
 
 const AddOverlay = ({ handleClose }: props) => {
-    const [state, formAction] = useFormState<any, FormData>(postLinkType, undefined);
+    const [state, formAction] = useFormState<any, FormData>(postJobTitle, undefined);
     HandleCloseModal(state, handleClose)
 
     return (
         <Box sx={editOverlayContainer}>
             <Typography variant="h6" component="h2">
-                Add a new link type
+                Add a new phone
             </Typography>
 
             <form style={{ ...formStyle, flexDirection: "column" }} action={formAction}>
                 <Box>
                     <TextField
-                        label="Link type"
-                        name="link_type"
+                        label="Job Title"
+                        name="title"
                         variant="outlined"
                         sx={textFiledStyle}
                     />
                 </Box>
 
                 <TextError>{state ? state.status : ""}</TextError>
-                <AddOverlayBtns modelName='link type' handleClose={handleClose} />
+                <AddOverlayBtns modelName='job title' handleClose={handleClose} />
             </form>
         </Box>
     );

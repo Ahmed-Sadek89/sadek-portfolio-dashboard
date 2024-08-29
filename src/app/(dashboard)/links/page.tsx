@@ -4,17 +4,17 @@ import EditOverlay from './_components/EditOverlay'
 import AddOverlay from './_components/AddOverlay'
 import RemoveOverlay from './_components/RemoveOverlay'
 import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGridTable'
-import { linkType } from '@/types'
-import { getLinkType } from '@/lib/getLinkType'
+import { getJobTitles } from '@/lib/getJobTitles'
+import { jobTitle } from '@/types'
 
 const page = async () => {
-  const linkType: linkType[] = await getLinkType()
+  const jobTitles: jobTitle[] = await getJobTitles()
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
       <CustomDataGridTable
-        userRows={linkType}
+        userRows={jobTitles}
         columns={columns}
-        pageName='link types'
+        pageName='Job title'
         EditOverlay={EditOverlay}
         AddOverlay={AddOverlay}
         RemoveOverlay={RemoveOverlay}
