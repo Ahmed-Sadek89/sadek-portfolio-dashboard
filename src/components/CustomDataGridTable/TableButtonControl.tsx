@@ -3,9 +3,7 @@ import React from 'react'
 import { EditOvelayStyle } from './style';
 
 type props = {
-    param: {
-        id: number;
-    },
+    param: any,
     EditOverlay: ({ param, handleClose }: any) => JSX.Element | JSX.Element
     RemoveOverlay: ({ param, handleClose }: any) => JSX.Element
 }

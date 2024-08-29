@@ -3,7 +3,7 @@ import { getSession } from "@/lib/session";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export const removePhone = async (
+export const removeJobTitle = async (
     prevState: {
         status: undefined | string,
     },
@@ -13,7 +13,7 @@ export const removePhone = async (
     const id = formData.get("id") as string;
 
     try {
-        const response = await fetch(`${process.env.BACKEND_LINK}/phone/${id}`, {
+        const response = await fetch(`${process.env.BACKEND_LINK}/job_title/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export const removePhone = async (
             session.destroy()
             redirect("/login");
         }
-        revalidatePath("/phone");
+        revalidatePath("/job_title");
 
     } catch (error: any) {
         console.log({ error: error.message })
