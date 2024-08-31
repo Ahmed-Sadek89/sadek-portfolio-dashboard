@@ -9,6 +9,10 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "demos.pixinvent.com"
+            },
+            {
+                protocol: "https",
+                hostname: "res.cloudinary.com"
             }
         ]
     }

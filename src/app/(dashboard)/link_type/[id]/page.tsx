@@ -4,8 +4,8 @@ import EditOverlay from './_components/EditOverlay'
 import AddOverlay from './_components/AddOverlay'
 import RemoveOverlay from './_components/RemoveOverlay'
 import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGridTable'
-import { linkType } from '@/types'
-import { getLinkType } from '@/lib/getLinkType'
+import { link } from '@/types'
+import { getLinksByLinkTypeIdAndAwnerId } from '@/lib/getLinksByLinkTypeIdAndAwnerId'
 
 type props = {
   params: {
@@ -14,11 +14,11 @@ type props = {
 }
 
 const page = async ({ params }: props) => {
-  const jobTitles: linkType[] = await getLinkType()
+  const linksByLinkTypeAndAwnerId: link[] = await getLinksByLinkTypeIdAndAwnerId(Number(params.id))
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
       <CustomDataGridTable
-        userRows={jobTitles}
+        userRows={linksByLinkTypeAndAwnerId}
         columns={columns}
         pageName={`link type number #${params.id}`}
         EditOverlay={EditOverlay}

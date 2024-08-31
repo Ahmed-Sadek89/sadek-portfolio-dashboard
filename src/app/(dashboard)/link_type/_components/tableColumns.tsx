@@ -14,7 +14,7 @@ export const columns: GridColDef[] = [
         field: 'related links', headerName: 'Related links', width: 200, disableColumnMenu: true,
         renderCell: (params: GridRenderCellParams<any, any, any>) => {
             return (
-                <Link href={`link_type/${params.id}`}>
+                <Link href={`/link_type/${params.row.id}`}>
                     <Typography bgcolor={'info.main'} className='p-2 rounded opacity-90 hover:opacity-100'>
                         Links
                     </Typography>

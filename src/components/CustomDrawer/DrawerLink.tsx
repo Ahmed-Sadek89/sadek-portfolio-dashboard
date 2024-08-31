@@ -14,14 +14,14 @@ type props = {
 }
 const DrawerLink = ({ text, Icon, route, setOpen }: props) => {
     const theme = useTheme();
-    const ismediumScreen = useMediaQuery(theme.breakpoints.up('md'));
+    const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
     const pathname = usePathname()
-    
+
     return (
         <Link
-            href={route}
+            href={`/${route}`}
             className={`${pathname === (text === "home" ? "/" : `/${route}`) ? "active navLinkCustomStyle" : "navLinkCustomStyle"}`}
-            onClick={() => !ismediumScreen && setOpen(false)}
+            onClick={() => !isMediumScreen && setOpen(false)}
         >
             <ListItemIcon sx={ListItemIconStyle}>
                 <Icon sx={{ color: "text.secondary" }} />

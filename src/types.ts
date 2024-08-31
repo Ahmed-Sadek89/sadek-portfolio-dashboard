@@ -96,6 +96,12 @@ export type jobTitle = {
     awner_id: number;
 }
 
+export type linkType = {
+    id: number;
+    link_type: string;
+    awner_id: number;
+}
+
 export type link = {
     id: number;
     title: string;
@@ -103,6 +109,12 @@ export type link = {
     icon: string | null;
     link_type_id: number;
     awner_id: number;
+}
+
+export type LinksWithItsType = {
+    id: number,
+    link_type: string,
+    links: link[]
 }
 
 export type phone = {
@@ -121,11 +133,6 @@ export type skills = {
     awner_id: number;
 }
 
-export type linkType = {
-    id: number;
-    link_type: string;
-    awner_id: number;
-}
 
 export type message = {
     id: number;
