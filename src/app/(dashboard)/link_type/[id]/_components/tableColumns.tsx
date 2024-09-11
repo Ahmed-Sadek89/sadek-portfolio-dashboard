@@ -13,7 +13,6 @@ export const columns: GridColDef[] = [
     {
         field: 'link', headerName: 'Link', width: 200, disableColumnMenu: true,
         renderCell: (params: GridRenderCellParams<any, any, any>) => {
-            console.log({ params })
             return (
                 <Link target="_blank" href={params.row.link} rel="noopener noreferrer">
                     <Image src={params.row.icon} alt={params.row.title} width={40} height={40} className='object-cover rounded-full' />

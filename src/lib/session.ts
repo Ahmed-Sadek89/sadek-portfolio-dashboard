@@ -7,11 +7,6 @@ import { SessionOptions } from "iron-session";
 interface SessionData {
     user: {
         id?: number,
-        name?: number,
-        email?: string
-        description?: number,
-        image?: string
-        isPrimary?: boolean,
     },
     Authorization?: string
 }
