@@ -38,10 +38,10 @@ export const passwordBoxContainer = {
     display: 'flex',
     alignItems: 'center',
     background: 'transparent',
-    borderWidth: '1px',
     borderRadius: '10px',
     padding: '5px 10px',
     width: '100%',
+    border: "1px solid",
 }
 
 export const userLink = { display: 'flex', flexDirection: "row", justifyContent: "center", gap: '10px' }

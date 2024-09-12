@@ -1,15 +1,12 @@
 import { Box, Typography } from '@mui/material'
-import { boxContainer, greetingTextStyle, logoStyle, userLink } from './style';
-import LoginForm from './_components/RegisterForm';
 import Link from 'next/link';
-import Image from 'next/image';
+import RegisterForm from './_components/RegisterForm';
 
 
 const Register = () => {
     return (
-        <Box sx={boxContainer}>
-            <Image src={'/Logo.svg'} alt='logo' style={logoStyle} width={30} height={100} className='w-[10%] h-auto' />
-            <Box sx={greetingTextStyle}>
+        <>
+            <Box className="flex flex-col gap-1">
                 <Typography sx={{ color: "text.primary" }} variant="h6">
                     Adventure starts here 🚀
                 </Typography>
@@ -17,12 +14,12 @@ const Register = () => {
                     Make your app management easy and fun!
                 </Typography>
             </Box>
-            <LoginForm />
-            <Box sx={userLink}>
-                <Typography>Already have an account?</Typography>
+            <RegisterForm />
+            <Box className="flex items-center gap-2 w-full justify-center">
+                <Typography sx={{ color: "secondary.main" }}>Already have an account?</Typography>
                 <Link href='/login' style={{ color: "#2196f3" }}>Sign in instead</Link>
             </Box>
-        </Box>
+        </>
     )
 }
 

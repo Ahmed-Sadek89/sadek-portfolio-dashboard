@@ -11,7 +11,7 @@ const ButtonSubmit = ({ btnStyle, children }: props) => {
     const status = useFormStatus();
 
     return (
-        <Button type="submit" sx={{...btnStyle,  minWidth: "auto"}} disabled={status.pending}>
+        <Button type="submit" sx={{ ...btnStyle, height: "40px", minWidth: "auto" }} disabled={status.pending}>
             {status.pending ? <CircularProgress size={15} thickness={4} color='secondary' /> : children}
         </Button>
     )
