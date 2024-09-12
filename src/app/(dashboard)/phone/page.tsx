@@ -11,7 +11,7 @@ import { phoneWithoutAwnerId } from '@/types'
 const page = async () => {
   const phones: phoneWithoutAwnerId[] = await getPhones();
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+    <Box className="flex flex-col gap-[40px]">
       <CustomDataGridTable
         userRows={phones}
         columns={columns}

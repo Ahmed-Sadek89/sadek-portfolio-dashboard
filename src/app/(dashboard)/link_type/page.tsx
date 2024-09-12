@@ -10,7 +10,7 @@ import { getLinkType } from '@/lib/getLinkType'
 const page = async () => {
   const linkType: linkType[] = await getLinkType()
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+    <Box className="flex flex-col gap-[40px]">
       <CustomDataGridTable
         userRows={linkType}
         columns={columns}

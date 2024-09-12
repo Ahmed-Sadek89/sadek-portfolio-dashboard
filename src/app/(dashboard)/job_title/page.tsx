@@ -10,7 +10,7 @@ import { jobTitle } from '@/types'
 const page = async () => {
   const jobTitles: jobTitle[] = await getJobTitles()
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+    <Box className="flex flex-col gap-[40px]">
       <CustomDataGridTable
         userRows={jobTitles}
         columns={columns}

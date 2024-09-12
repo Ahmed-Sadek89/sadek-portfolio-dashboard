@@ -16,7 +16,7 @@ type props = {
 const page = async ({ params }: props) => {
   const linksByLinkTypeAndAwnerId: link[] = await getLinksByLinkTypeIdAndAwnerId(Number(params.id))
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+    <Box className="flex flex-col gap-[40px]">
       <CustomDataGridTable
         userRows={linksByLinkTypeAndAwnerId}
         columns={columns}

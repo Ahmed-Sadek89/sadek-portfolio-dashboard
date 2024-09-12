@@ -1,12 +1,13 @@
 "use client"
 import { memo } from 'react';
-import { Box, TextField, Typography } from '@mui/material';
-import { editOverlayContainer, formStyle, textFiledStyle } from '@/global/OverlayStyles';
+import { Box, Typography } from '@mui/material';
+ 
 import { useFormState } from 'react-dom';
 import { postPhone } from '@/actions/phone/phone-add';
 import TextError from '@/components/ui/text-error';
 import HandleCloseModal from '@/hooks/handle-close-modal';
 import AddOverlayBtns from '@/components/AddOverlayBtns/AddOverlayBtns';
+import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
 
 type props = {
     handleClose: () => void;
@@ -17,21 +18,13 @@ const AddOverlay = ({ handleClose }: props) => {
     HandleCloseModal(state, handleClose)
 
     return (
-        <Box sx={editOverlayContainer}>
+        <Box className="flex flex-col gap-[10px]">
             <Typography variant="h6" component="h2">
                 Add a new phone
             </Typography>
 
-            <form style={{ ...formStyle, flexDirection: "column" }} action={formAction}>
-                <Box>
-                    <TextField
-                        label="Phone number"
-                        name="phone_number"
-                        variant="outlined"
-                        type='number'
-                        sx={textFiledStyle}
-                    />
-                </Box>
+            <form className='flex flex-col w-full gap-[20px]' action={formAction}>
+                <BaseFormTextFieldInput label="Phone number" name="phone_number" type='number' />
 
                 <TextError>{state ? state.status : ""}</TextError>
                 <AddOverlayBtns modelName='phone' handleClose={handleClose} />

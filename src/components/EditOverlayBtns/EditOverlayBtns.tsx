@@ -23,7 +23,7 @@ const EditOverlayBtns = ({ handleClose }: props) => {
             <Button
                 type="button"
                 variant="contained"
-                sx={{ bgcolor: "error.main", ":hover": { bgcolor: "#b02a37" }, ...btnStyle }}
+                sx={{ bgcolor: "error.main",height: "40px", ":hover": { bgcolor: "#b02a37" }, ...btnStyle }}
                 onClick={handleClose}
             >
                 <CancelIcon />

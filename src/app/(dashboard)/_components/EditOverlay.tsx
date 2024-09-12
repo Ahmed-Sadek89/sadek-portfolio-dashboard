@@ -1,6 +1,6 @@
 "use client"
 import { Box, Button, MenuItem, TextField, Typography } from '@mui/material';
-import { btnsGroupStyle, btnStyle, datePickerStyle, editOverlayContainer, formStyle, textFiledStyle } from '../../../global/OverlayStyles';
+import { btnsGroupStyle, btnStyle, datePickerStyle, formStyle, textFiledStyle } from '../../../global/OverlayStyles';
 import AddCardOutlinedIcon from '@mui/icons-material/AddCardOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -48,7 +48,7 @@ const EditOverlay = ({ param, handleClose }: props) => {
     };
 
     return (
-        <Box sx={editOverlayContainer}>
+        <Box className="flex flex-col gap-[10px]">
             <Typography variant="h6" component="h2">
                 Edit the hotel number #{param.id}
             </Typography>

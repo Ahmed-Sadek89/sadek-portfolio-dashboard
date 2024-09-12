@@ -6,7 +6,7 @@ import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGrid
 
 const Hotels = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+    <Box className="flex flex-col gap-[40px]">
       <CustomDataGridTable
         userRows={userRows}
         columns={columns}

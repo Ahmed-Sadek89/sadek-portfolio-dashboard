@@ -1,11 +1,12 @@
 "use client"
 import { Box, TextField, Typography } from '@mui/material';
-import { editOverlayContainer, formStyle, textFiledStyle } from '@/global/OverlayStyles';
+  
 import { useFormState } from 'react-dom';
 import HandleCloseModal from '@/hooks/handle-close-modal';
 import TextError from '@/components/ui/text-error';
 import EditOverlayBtns from '@/components/EditOverlayBtns/EditOverlayBtns';
 import { editJobTitle } from '@/actions/jobTitle/jobTitle-edit';
+import { textFiledStyle } from '@/global/OverlayStyles';
 
 
 type props = {
@@ -23,12 +24,12 @@ const EditOverlay = ({ param, handleClose }: props) => {
     HandleCloseModal(state, handleClose)
 
     return (
-        <Box sx={editOverlayContainer}>
+        <Box className="flex flex-col gap-[10px]">
             <Typography variant="h6" component="h2">
                 Edit the job title number #{param.id}
             </Typography>
 
-            <form style={{ ...formStyle, flexDirection: "column" }} action={formAction}>
+            <form className='flex flex-col w-full gap-[20px]' action={formAction}>
                 <input type="hidden" name="id" value={param.id} />
                 <Box>
                     <TextField
