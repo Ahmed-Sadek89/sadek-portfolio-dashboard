@@ -130,6 +130,7 @@ export type skills = {
     title: string;
     icon: string | null;
     category_id: number;
+    category_name: string;
     awner_id: number;
 }
 
