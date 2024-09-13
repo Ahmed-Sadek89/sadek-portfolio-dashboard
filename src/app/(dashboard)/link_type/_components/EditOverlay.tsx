@@ -1,12 +1,11 @@
 "use client"
 import { Box, Typography } from '@mui/material';
-  
 import { useFormState } from 'react-dom';
 import HandleCloseModal from '@/hooks/handle-close-modal';
 import TextError from '@/components/ui/text-error';
-import EditOverlayBtns from '@/components/EditOverlayBtns/EditOverlayBtns';
 import { editLinkType } from '@/actions/linkType/linkType-edit';
 import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
+import OverlayBtns from '@/components/OverlayBtns/OverlayBtns';
 
 
 type props = {
@@ -33,7 +32,7 @@ const EditOverlay = ({ param, handleClose }: props) => {
                 <input type="hidden" name="id" value={param.id} />
                 <BaseFormTextFieldInput label="Link type" name="link_type" type='string' defaultValue={param.link_type} />
                 <TextError>{state ? state.status : ""}</TextError>
-                <EditOverlayBtns handleClose={handleClose} />
+                <OverlayBtns action='Edit' handleClose={handleClose} />
             </form>
         </Box >
     );

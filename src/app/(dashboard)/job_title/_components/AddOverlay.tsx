@@ -4,9 +4,9 @@ import { Box, Typography } from '@mui/material';
 import { useFormState } from 'react-dom';
 import TextError from '@/components/ui/text-error';
 import HandleCloseModal from '@/hooks/handle-close-modal';
-import AddOverlayBtns from '@/components/AddOverlayBtns/AddOverlayBtns';
 import { postJobTitle } from '@/actions/jobTitle/jobTitle-add';
 import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
+import OverlayBtns from '@/components/OverlayBtns/OverlayBtns';
 
 type props = {
     handleClose: () => void;
@@ -26,7 +26,7 @@ const AddOverlay = ({ handleClose }: props) => {
                 <BaseFormTextFieldInput label="Job title" name="title" type='string' />
 
                 <TextError>{state ? state.status : ""}</TextError>
-                <AddOverlayBtns modelName='job title' handleClose={handleClose} />
+                <OverlayBtns action='Add' modelName='job title' handleClose={handleClose} />
             </form>
         </Box>
     );

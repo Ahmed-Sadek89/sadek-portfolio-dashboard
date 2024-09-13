@@ -4,8 +4,8 @@ import { useFormState } from 'react-dom';
 import HandleCloseModal from '@/hooks/handle-close-modal';
 import TextError from '@/components/ui/text-error';
 import { editPhone } from '@/actions/phone/phone-edit';
-import EditOverlayBtns from '@/components/EditOverlayBtns/EditOverlayBtns';
 import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
+import OverlayBtns from '@/components/OverlayBtns/OverlayBtns';
 
 type props = {
     param: {
@@ -27,7 +27,7 @@ const EditOverlay = ({ param, handleClose }: props) => {
                 <input type="hidden" name="id" value={param.id} />
                 <BaseFormTextFieldInput label="Phone number" name="phone_number" type='number' defaultValue={param.phone_number} />
                 <TextError>{state ? state.status : ""}</TextError>
-                <EditOverlayBtns handleClose={handleClose} />
+                <OverlayBtns handleClose={handleClose} action="Edit" />
             </form>
         </Box >
     );

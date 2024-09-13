@@ -6,8 +6,8 @@ import { useFormState } from 'react-dom';
 import { postPhone } from '@/actions/phone/phone-add';
 import TextError from '@/components/ui/text-error';
 import HandleCloseModal from '@/hooks/handle-close-modal';
-import AddOverlayBtns from '@/components/AddOverlayBtns/AddOverlayBtns';
 import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
+import OverlayBtns from '@/components/OverlayBtns/OverlayBtns';
 
 type props = {
     handleClose: () => void;
@@ -27,7 +27,7 @@ const AddOverlay = ({ handleClose }: props) => {
                 <BaseFormTextFieldInput label="Phone number" name="phone_number" type='number' />
 
                 <TextError>{state ? state.status : ""}</TextError>
-                <AddOverlayBtns modelName='phone' handleClose={handleClose} />
+                <OverlayBtns modelName='phone' handleClose={handleClose} action="Add" />
             </form>
         </Box>
     );

@@ -1,6 +1,6 @@
 "use client"
 import { Box, Button, Typography } from '@mui/material'
-import { btnsGroupStyle, btnStyle } from '@/global/OverlayStyles';
+import { btnStyle } from '@/global/OverlayStyles';
 import ButtonSubmit from '../ui/button-submit';
 
 type props = {
@@ -16,7 +16,7 @@ const RemoveOverlayContent = ({ id, modelName, handleClose }: props) => {
                 Are you sure that you want delete row number #{id} in {modelName}?
             </Typography>
             <input type="hidden" name="id" value={id} />
-            <Box sx={btnsGroupStyle}>
+            <Box className="flex gap-[10px] items-center justify-between w-full" >
                 <ButtonSubmit
                     btnStyle={{ bgcolor: "error.main", ":hover": { bgcolor: "#b02a37" }, ...btnStyle }}
                 >
@@ -26,7 +26,7 @@ const RemoveOverlayContent = ({ id, modelName, handleClose }: props) => {
                 </ButtonSubmit>
                 <Button
                     variant='contained'
-                    sx={{ bgcolor: "custom.customInfoText", ":hover": { bgcolor: "custom.customInfoText" }, ...btnStyle, color: "text.primary" }}
+                    sx={{ bgcolor: "custom.customInfoText", ":hover": { bgcolor: "custom.customInfoText" }, ...btnStyle, color: "text.primary", height: "40px"}}
                     onClick={() => handleClose()}
                 >
                     <Typography variant='body1'>

@@ -1,19 +1,20 @@
 "use server";
 import { getSession } from "@/lib/session";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
-export const removeLinkType = async (
+export const removeLink = async (
     prevState: {
         status: undefined | string,
     },
     formData: FormData,
 ) => {
+
     const session = await getSession();
-    const id = formData.get("id") as string;
+    const id = formData.get("id") as string
+    const link_type_id = formData.get("link_type_id") as string
 
     try {
-        const response = await fetch(`${process.env.BACKEND_LINK}/link_type/${id}`, {
+        const response = await fetch(`${process.env.BACKEND_LINK}/link/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -24,13 +25,16 @@ export const removeLinkType = async (
             }),
         })
 
-        if (!response.ok) {  // if there is a problem ((remove the session)) and ((redirect to '/login'))
-            session.destroy()
-            redirect("/login");
+        let result = await response.json();
+
+        if (result.status !== 200) {
+            return { status: result.message };
         }
-        revalidatePath("/link_type");
+        revalidatePath(`/link_type/${link_type_id}`);
+        return { status: "success" }
 
     } catch (error: any) {
         console.log({ error: error.message })
+        return { status: "Link type is required" };
     }
 };

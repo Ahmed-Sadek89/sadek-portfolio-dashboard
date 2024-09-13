@@ -3,9 +3,9 @@ import { Box, Typography } from '@mui/material';
 import { useFormState } from 'react-dom';
 import HandleCloseModal from '@/hooks/handle-close-modal';
 import TextError from '@/components/ui/text-error';
-import EditOverlayBtns from '@/components/EditOverlayBtns/EditOverlayBtns';
 import { editJobTitle } from '@/actions/jobTitle/jobTitle-edit';
 import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
+import OverlayBtns from '@/components/OverlayBtns/OverlayBtns';
 
 
 type props = {
@@ -32,7 +32,7 @@ const EditOverlay = ({ param, handleClose }: props) => {
                 <input type="hidden" name="id" value={param.id} />
                 <BaseFormTextFieldInput label="Job title" name="title" type='string' defaultValue={param.title} />
                 <TextError>{state ? state.status : ""}</TextError>
-                <EditOverlayBtns handleClose={handleClose} />
+                <OverlayBtns action='Edit' handleClose={handleClose} />
             </form>
         </Box >
     );
