@@ -1,7 +1,6 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, Grid } from '@mui/material'
 import Link from 'next/link'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { getSkillsCategoryId } from '@/lib/getSkillsByCategoryId'
 
 type props = {
   params: {
@@ -10,7 +9,7 @@ type props = {
 }
 
 const page = async ({ params }: props) => {
-  const skillsCategoryId = await getSkillsCategoryId(Number(params.id));
+  // const skillsCategoryId = await getSkillsCategoryId(Number(params.id));
   return (
     <Box className="flex flex-col gap-[10px]">
       <Link href="/category_project">
@@ -18,9 +17,17 @@ const page = async ({ params }: props) => {
           <ArrowBackIcon />
         </Button>
       </Link>
-      <div>
-        fetch projects by category project id here
-      </div>
+      <Grid container spacing={2} >
+        {
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((key, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={key}>
+              <Box boxShadow={7} className="px-[1.5625rem] py-[1.75rem] rounded-[10px] flex flex-col gap-2" sx={{ backgroundColor: "primary.main", color: "text.primary" }}>
+                project ${index}
+              </Box>
+            </Grid>
+          ))
+        }
+      </Grid>
     </Box>
   )
 }
