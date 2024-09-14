@@ -5,7 +5,7 @@ import HandleCloseModal from '@/hooks/handle-close-modal';
 import TextError from '@/components/ui/text-error';
 import BaseFormTextFieldInput from '@/components/ui/base-form-textfield-input';
 import OverlayBtns from '@/components/OverlayBtns/OverlayBtns';
-import { editCategorySkill } from '@/actions/categorySkill/categorySkill-edit';
+import { editCategoryProject } from '@/actions/categoryProject/categoryProject-edit';
 
 
 type props = {
@@ -19,13 +19,13 @@ type props = {
 
 const EditOverlay = ({ param, handleClose }: props) => {
 
-    const [state, formAction] = useFormState<any, FormData>(editCategorySkill, undefined)
+    const [state, formAction] = useFormState<any, FormData>(editCategoryProject, undefined)
     HandleCloseModal(state, handleClose)
 
     return (
         <Box className="flex flex-col gap-[10px]">
             <Typography variant="h6" component="h2">
-                Edit the link type number #{param.id}
+                Edit the category project number #{param.id}
             </Typography>
 
             <form className='flex flex-col w-full gap-[20px]' action={formAction}>

@@ -9,7 +9,7 @@ import FilterByTable from './_components/FilterByTable';
 const Activity = ({ activities }: { activities: activity[] | undefined }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const contentRef = useRef<HTMLElement>(null);
-
+    
     const handleScroll = () => {
         if (contentRef.current) {
             setIsScrolled(contentRef.current.scrollTop > 0);
@@ -25,6 +25,7 @@ const Activity = ({ activities }: { activities: activity[] | undefined }) => {
     }, []);
 
     const [activityState, setActivityState] = useState<activity[] | undefined>()
+    console.log({activityState, activities, length: activities?.length})
     useEffect(() => {
         setActivityState(activities);
     }, [activities])
