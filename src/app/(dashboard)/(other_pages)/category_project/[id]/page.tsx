@@ -1,6 +1,7 @@
 import { Box, Button, Grid } from '@mui/material'
 import Link from 'next/link'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ProjectCard from '@/components/ProjectCard/ProjectCard';
 
 type props = {
   params: {
@@ -19,12 +20,8 @@ const page = async ({ params }: props) => {
       </Link>
       <Grid container spacing={2} >
         {
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((key, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={key}>
-              <Box boxShadow={7} className="px-[1.5625rem] py-[1.75rem] rounded-[10px] flex flex-col gap-2" sx={{ backgroundColor: "primary.main", color: "text.primary" }}>
-                project ${index}
-              </Box>
-            </Grid>
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((project, index) => (
+            <ProjectCard key={index} index={index} project={project} />
           ))
         }
       </Grid>

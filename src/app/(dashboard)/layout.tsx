@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Layout from "@/components/Layout/Layout";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/session";
+import Layout from "@/components/Layout/Layout";
 
 export const metadata: Metadata = {
     title: "Ahmed Sadek | أْحْمَدْ صَادِقْ",
@@ -20,18 +20,14 @@ export default async function RootLayout({
     children: React.ReactNode;
 }>) {
     const session = await getSession();
-    
+
     if (!session.Authorization) {
         redirect("/login")
     }
 
     return (
-        <html lang="en">
-            <body suppressHydrationWarning={true}>
-                <Layout>
-                    {children}
-                </Layout>
-            </body>
-        </html>
+        <Layout>
+            {children}
+        </Layout>
     );
 }

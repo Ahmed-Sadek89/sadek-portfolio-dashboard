@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { btnsGroupStyle, btnStyle, datePickerStyle, formStyle, textFiledStyle } from '../../../../global/OverlayStyles';
+import { btnsGroupStyle, btnStyle, datePickerStyle, formStyle, textFiledStyle } from '../../../../../global/OverlayStyles';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 

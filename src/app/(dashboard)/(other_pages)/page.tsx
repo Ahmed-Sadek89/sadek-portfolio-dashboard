@@ -4,7 +4,7 @@ import EditOverlay from './_components/EditOverlay';
 import RemoveOverlay from './_components/RemoveOverlay';
 import HomeCards from './_components/HomeCards';
 import CustomDataGridTable from '@/components/CustomDataGridTable/CustomDataGridTable';
-import { X } from '../../global/AnyTSX';
+import { X } from '../../../global/AnyTSX';
 import { columns, userRows } from './_components/tableRowsAndColumns';
 import { getAwnerById } from '@/lib/getAwnerById';
 import { getPropsFromAwnerCounts } from '@/helpers/getPropsFromAwnerCounts';
