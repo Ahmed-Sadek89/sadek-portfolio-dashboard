@@ -10,6 +10,7 @@ const Page = () => {
     const { id } = useParams()
     return (
         <Box className='flex flex-col gap-3'>
+            
             <div className='relative w-full h-[60vh]'>
                 <Image src="/logo.jpg" alt='title' width={1000} height={2000} className='object-fill w-full h-full' />
                 <Typography variant='h2' className='absolute bottom-2 left-5 capitalize font-bold' sx={{ color: "text.primary" }}>title</Typography>
@@ -24,7 +25,7 @@ const Page = () => {
                             <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
                                 Description:
                             </Typography>
-                            <Typography variant='body1'  sx={{ color: "text.secondary" }}>
+                            <Typography variant='body1' sx={{ color: "text.secondary" }}>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab iste quae pariatur consectetur assumenda
                                 dicta iusto! Necessitatibus repellat possimus sed! Necessitatibus, debitis. Officiis quisquam cupiditate
                                 tempora eum assumenda dolor debitis.
