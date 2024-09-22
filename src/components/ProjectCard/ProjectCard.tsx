@@ -14,7 +14,7 @@ const ProjectCard = ({ project, index }: props) => {
                 <div className='px-[1.5625rem] pb-6 pt-2 text-center flex flex-col items-center gap-y-4'>
                     <h3>project ${index}</h3>
                     <div className='flex items-center justify-center w-full gap-x-4'>
-                        <Link href={`/project/${index}`} className='bg-[#4caf50] text-white hover:opacity-90 transition duration-300 rounded px-[16px] py-[6px]'  >
+                        <Link href={`/project/visit/${index}`} className='bg-[#4caf50] text-white hover:opacity-90 transition duration-300 rounded px-[16px] py-[6px]'  >
                             Visit
                         </Link>
                         <Link href={`/project/edit/${index}`} className='bg-[#2196f3] text-white hover:opacity-90 transition duration-300 rounded px-[16px] py-[6px]'  >

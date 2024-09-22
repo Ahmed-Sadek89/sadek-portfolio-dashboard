@@ -1,7 +1,7 @@
 import { Box, Grid } from '@mui/material'
 import ProjectCard from '@/components/ProjectCard/ProjectCard';
 
-const page = async () => {
+const page =  () => {
   return (
     <Box className="flex flex-col gap-[40px] p-[24px]">
       <Grid container spacing={2} >

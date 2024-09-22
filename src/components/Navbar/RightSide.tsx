@@ -20,7 +20,7 @@ const RightSide = () => {
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     return (
         <Box sx={{ width: ismediumScreen ? "50%" : "100%", ...rightSideContainer }}>
-            <Link href={"/project/add"}>
+            <Link href={"/project/create"}>
                 <Button sx={createNewProjectMain}>
                     + Create new projects
                 </Button>
