@@ -1,9 +1,10 @@
-import { Box, IconButton, InputBase, useMediaQuery, useTheme } from '@mui/material'
+import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Link from 'next/link';
-import { leftSideContainer, logoLink, searchInputContainer } from './style';
+import { leftSideContainer, logoLink } from './style';
 import Image from 'next/image';
+import FormBaseInput from '../ui/form-base-input';
 
 const LeftSide = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const theme = useTheme()
@@ -20,19 +21,17 @@ const LeftSide = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<bo
             </IconButton>
             {
                 ismediumScreen &&
-                <Box sx={searchInputContainer}>
-                    <InputBase
-                        placeholder="Search…"
-                        inputProps={{ 'aria-label': 'search' }}
-                        sx={{ width: "100%" }}
-                    />
-                    <SearchIcon />
-                </Box>
+                <FormBaseInput
+                    className="bg-transparent border border-[#2c2e33] flex items-center justify-between rounded-[10px] gap-2 px-2 py-2 w-full"
+                    placeholder="Search…"
+                    Icon={SearchIcon}
+                />
+
             }
             {
                 !ismediumScreen &&
                 <Link
-                    style={{...logoLink, textTransform: "uppercase",}}
+                    style={{ ...logoLink, textTransform: "uppercase", }}
                     href={"/"}
                 >
                     <Image src={'/Logo.svg'} alt='logo' width={30} height={30} />

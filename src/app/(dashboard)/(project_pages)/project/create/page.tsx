@@ -1,16 +1,42 @@
-import { Box, Typography } from '@mui/material'
-import Image from 'next/image'
+"use client"
+import { Box, Checkbox, FormControl, FormControlLabel, TextField, Typography } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Link from 'next/link';
+import ProjectFormUploadImageInput from '@/components/ui/project-form-upload-image-input';
+import FormFocusInput from '@/components/ui/form-focus-input';
+import FormFocusTextarea from '@/components/ui/form-focus-textarea';
+import FormSelectInput from '@/components/ui/form-select-input';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { datePickerStyle, textFiledStyle } from '@/global/OverlayStyles';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useState } from 'react';
+import dayjs from 'dayjs';
+import CategoryProjectMenu from '@/components/CategoryProjectMenu/CategoryProjectMenu';
+import CategorySkillsMenu from '@/components/CategorySkillsMenu/CategorySkillsMenu';
 
 const Page = () => {
+    const data = [
+        {
+            id: 1,
+            status: "completed",
+        },
+        {
+            id: 2,
+            status: "not completed",
+        }
+    ];
+    const [date, setDate] = useState()
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     return (
         <Box component={'form'} className='flex flex-col gap-3'>
-            <div className='relative w-full h-[60vh]'>
-                {/* <FormUpliadImageInput name="icon" /> */}
-                <Image src="/no_image.jpg" alt='title' width={1000} height={2000} className='object-fill w-full h-full' />
-                <Typography variant='h2' className='absolute bottom-2 left-5 capitalize font-bold' sx={{ color: "text.primary" }}>title</Typography>
+            <div className='relative w-full'>
+                <ProjectFormUploadImageInput name="icon" />
+                <FormFocusInput
+                    containerStyle='absolute bottom-4 left-5 w-1/2'
+                    placeholder='Click to add Title'
+                    name="title"
+                />
             </div>
             <div className='flex items-start w-full justify-between flex-col sm:flex-row p-[26px]'>
                 <div className='flex flex-col gap-y-10 w-2/3'>
@@ -19,63 +45,71 @@ const Page = () => {
                         <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
                             Description:
                         </Typography>
-                        <Typography variant='body1' sx={{ color: "text.secondary" }}>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab iste quae pariatur consectetur assumenda
-                            dicta iusto! Necessitatibus repellat possimus sed! Necessitatibus, debitis. Officiis quisquam cupiditate
-                            tempora eum assumenda dolor debitis.
-                        </Typography>
+                        <FormFocusTextarea
+                            placeholder='Click to add description'
+                            name="description"
+                        />
                     </div>
                     <div className='flex flex-col gap-2'>
-                        <div className="flex items-center gap-x-3">
+                        <div className="flex items-center gap-x-3 w-full">
                             <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
                                 Status:
                             </Typography>
-                            <Typography variant='body1' className='p-2 rounded' sx={{ color: "text.primary", bgcolor: "success.main" }}>
+                            {/* <Typography variant='body1' className='p-2 rounded' sx={{ color: "text.primary", bgcolor: "success.main" }}>
                                 completed
-                            </Typography>
+                            </Typography> */}
+                            <div className="w-1/2">
+                                <FormControl fullWidth>
+                                    <FormSelectInput label='Choose status' name='status' data={data} keyData="status" />
+                                </FormControl>
+                            </div>
                         </div>
                         <div className="flex items-center gap-x-3">
                             <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
                                 Started at:
                             </Typography>
-                            <Typography variant='body1' sx={{ color: "text.secondary" }}>
-                                27/11/1999
-                            </Typography>
+                            <Box sx={{ width: { xs: "100%", sm: "auto" } }}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs} name="created_at">
+                                    <DatePicker
+                                        label="Date"
+                                        value={date}
+                                        onChange={(newValue) => setDate(newValue as any)}
+                                        maxDate={dayjs()}
+                                        renderInput={(params) => <TextField name='date' {...params} sx={textFiledStyle} />}
+                                        PopperProps={{
+                                            sx: datePickerStyle,
+                                        }}
+                                    />
+                                </LocalizationProvider>
+                            </Box>
                         </div>
                         <div className="flex items-center gap-x-3">
                             <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
                                 Ended at:
                             </Typography>
-                            <Typography variant='body1' className='italic' sx={{ color: "text.secondary" }}>
+                            {/* <Typography variant='body1' className='italic' sx={{ color: "text.secondary" }}>
                                 Did not end yet!
-                            </Typography>
+                            </Typography> */}
+                            <Box sx={{ width: { xs: "100%", sm: "auto" } }}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs} name="created_at">
+                                    <DatePicker
+                                        label="Date"
+                                        value={date}
+                                        onChange={(newValue) => setDate(newValue as any)}
+                                        maxDate={dayjs()}
+                                        renderInput={(params) => <TextField name='date' {...params} sx={textFiledStyle} />}
+                                        PopperProps={{
+                                            sx: datePickerStyle,
+                                        }}
+                                    />
+                                </LocalizationProvider>
+                            </Box>
                         </div>
                     </div>
                     <div className='flex flex-col gap-y-5'>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Category Project:
-                            </Typography>
-                            <Typography variant='body1' className='p-2 font-bold rounded transition duration-300 italic' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                Landing pages
-                            </Typography>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Category skills
-                            </Typography>
-                            <div className=' flex items-start gap-x-3 gap-y-2 flex-wrap'>
-                                <Typography variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Frontend
-                                </Typography>
-                                <Typography variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Backend
-                                </Typography>
-                                <Typography variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Database
-                                </Typography>
-                            </div>
-                        </div>
+                        <CategoryProjectMenu />
+                        <CategorySkillsMenu />
+                        {/* customize skills  */}
                         <div className="flex items-start gap-x-3">
                             <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
                                 Skills
@@ -101,6 +135,7 @@ const Page = () => {
                                 </Typography>
                             </div>
                         </div>
+                        {/* customize skills  */}
                     </div>
                 </div>
                 <Box className="flex items-center justify-end gap-x-3 w-1/3">

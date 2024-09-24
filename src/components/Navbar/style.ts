@@ -13,19 +13,6 @@ export const leftSideContainer = {
     alignItems: "center",
 }
 
-export const searchInputContainer = {
-    background: "transparent",
-    border: `1px solid #2c2e33`,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    borderRadius: "10px",
-    gap: "10px",
-    padding: " 5px 10px",
-    width: "100%"
-}
-
 export const logoLink = {
 
     letterSpacing: "3px",
