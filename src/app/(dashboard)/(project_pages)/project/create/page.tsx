@@ -10,30 +10,33 @@ import ProjectLinksComponent from '@/components/ProjectFormComponents/ProjectLin
 import Title from '@/components/ProjectFormComponents/Title';
 import { btnStyle } from '@/global/OverlayStyles';
 import ButtonSubmit from '@/components/ui/button-submit';
+import { useFormState } from 'react-dom';
+import { postProject } from '@/actions/project/project-create';
 
 
 const Page = () => {
-    const handleSubmit = (formData: FormData) => {
-        // all are OK, send them to backend server
-        const attachment = formData.get("attachment")
-        const title = formData.get("title")
-        const description = formData.get("description")
-        const created_at = formData.get("created_at")
-        const ended_at = formData.get("ended_at")
-        const status = formData.get("status")
-        const category_project_id = formData.get("category_project_id")
-        const category_skills_id = formData.get("category_skills_id")
-        const skills_id = formData.get("skills_id")
-        const live_url = formData.get("live_url")
-        const repo_url = formData.get("repo_url")
-        console.log({attachment, title, description, created_at, ended_at, status, category_project_id, category_skills_id, skills_id,live_url,repo_url})
-    }
+    const [state, formAction] = useFormState<any, FormData>(postProject, undefined);
+    // const handleSubmit = (formData: FormData) => {
+    //     // all are OK, send them to backend server
+    //     const attachment = formData.get("attachment")
+    //     const title = formData.get("title")
+    //     const description = formData.get("description")
+    //     const created_at = formData.get("created_at")
+    //     const ended_at = formData.get("ended_at")
+    //     const status = formData.get("status")
+    //     const category_project_id = formData.get("category_project_id")
+    //     const category_skills_id = formData.get("category_skills_id")
+    //     const skills_id = formData.get("skills_id")
+    //     const live_url = formData.get("live_url")
+    //     const repo_url = formData.get("repo_url")
+    //     console.log({ attachment, title, description, created_at, ended_at, status, category_project_id, category_skills_id, skills_id, live_url, repo_url })
+    // }
     return (
-        <Box component={'form'} className='flex flex-col gap-3' action={handleSubmit}>
-            <ImageAndTitle />
+        <Box component={'form'} className='flex flex-col gap-3' action={formAction} encType="multipart/form-data">
+            <ImageAndTitle name={'title_desktop'} />
             <div className='flex items-start w-full justify-between flex-col sm:flex-row p-[26px] gap-y-10'>
                 <div className='flex flex-col gap-y-10 w-full sm:w-2/3'>
-                    <Title />
+                    <Title name={'title_mobile'} />
                     <Description />
                     <div className='flex flex-col gap-y-10'>
                         <Status />

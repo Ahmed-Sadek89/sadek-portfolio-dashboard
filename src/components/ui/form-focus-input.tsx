@@ -24,7 +24,6 @@ const FormFocusInput = ({ containerStyle, placeholder, name }: props) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
-    console.log(value.trim().length)
     return (
         <div className={containerStyle}>
             {(isFocused ) ? (
@@ -35,7 +34,6 @@ const FormFocusInput = ({ containerStyle, placeholder, name }: props) => {
                     value={value}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    name={name}
                     isFocused={isFocused}
                     type="text"
                 />

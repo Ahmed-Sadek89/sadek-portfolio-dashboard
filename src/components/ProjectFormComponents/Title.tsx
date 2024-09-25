@@ -2,7 +2,7 @@ import { Typography } from '@mui/material'
 import React from 'react'
 import FormFocusInput from '../ui/form-focus-input'
 
-const Title = () => {
+const Title = ({ name }: { name: string }) => {
     return (
         <div className="flex sm:hidden flex-col gap-y-1">
             <Typography variant='h6' sx={{ color: "text.primary" }}>
@@ -11,7 +11,7 @@ const Title = () => {
             <FormFocusInput
                 containerStyle=''
                 placeholder='Click to add Title'
-                name="title"
+                name={name}
             />
         </div>
     )
