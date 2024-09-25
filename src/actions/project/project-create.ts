@@ -10,6 +10,14 @@ export const postProject = async (
 ) => {
 
     const session = await getSession();
+    formData.append("awner_id", session.user.id?.toString() as any)
+    const created_at = formData.get("created_at") as string
+    const ended_at = formData.get("ended_at") as string
+    formData.delete('created_at')
+    formData.delete('ended_at')
+    formData.append("created_at", new Date(created_at).toISOString() as any)
+    formData.append("ended_at", new Date(ended_at).toISOString() as any)
+
     try {
         const response = await fetch(`${process.env.BACKEND_LINK}/project`, {
             method: "POST",

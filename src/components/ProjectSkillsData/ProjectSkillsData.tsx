@@ -11,7 +11,7 @@ const ProjectSkillsData = () => {
     const [checkedCategories, setCheckedCategories] = useState<number[]>([])
     const [skills, setSkills] = useState<skills[]>([])
     const [choosedSkills, setChoosedSkills] = useState<{ id: number, category_id: number }[]>([])
-    console.log({ checkedCategories, choosedSkills })
+
     const handleSetChoosedSkills = (skill: skills) => (event: any) => {
         if (event.target.checked) {
             setChoosedSkills(prev => [...prev, { id: skill.id, category_id: skill.category_id }])
@@ -20,6 +20,7 @@ const ProjectSkillsData = () => {
 
         }
     };
+
     const handleCheckboxChange = (category: number) => async (event: any) => {
         if (event.target.checked) {
             const skillsByCategoryId = await getSkillsCategoryId(category)
@@ -33,8 +34,8 @@ const ProjectSkillsData = () => {
                 return [...prev, ...res as { id: number, category_id: number }[]]
             })
         } else {
-            setSkills((prev) => prev.filter((item) => item.category_id !== category));
             setCheckedCategories((prev) => prev.filter((item) => item !== category));
+            setSkills((prev) => prev.filter((item) => item.category_id !== category));
 
             setChoosedSkills((prev) => prev.filter((item) => item.category_id !== category));
         }
@@ -50,6 +51,7 @@ const ProjectSkillsData = () => {
             }
         })
     }, [checkedCategories, choosedSkills])
+    
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 items-start gap-x-3 gap-y-2 w-full flex-wrap sm:w-2/3 justify-between">
             <CategorySkillsMenu data={data} checkedCategories={checkedCategories} name="category_skills_id" handleCheckboxChange={handleCheckboxChange} />
