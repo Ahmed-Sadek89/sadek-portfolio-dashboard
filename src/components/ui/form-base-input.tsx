@@ -1,8 +1,9 @@
 import { SvgIconComponent } from '@mui/icons-material';
 import { Box, InputBase } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 type props = {
+    type?: string,
     className: string,
     placeholder: string,
     name?: string,
@@ -10,20 +11,31 @@ type props = {
     value?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
     onBlur?: () => void,
+    iconProps?: any,
+    isFocused?: boolean
 }
-const FormBaseInput = ({ className, placeholder, name, Icon, value, onChange, onBlur }: props) => {
+const FormBaseInput = ({ isFocused, type, className, placeholder, name, Icon, value, onChange, onBlur, iconProps }: props) => {
+    const ref = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        if (isFocused && ref.current) {
+            ref.current.focus();
+        }
+    }, [isFocused]);
     return (
-        <Box className={className}>
+        <Box className={className} sx={{ borderWidth: "1px", borderColor: "text.primary" }}>
             <InputBase
                 placeholder={placeholder}
-                inputProps={{ 'aria-label': 'search' }}
-                sx={{ width: "100%", color:"text.secondary" }}
+                sx={{ width: "100%", color: "text.secondary" }}
                 name={name}
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
+                type={type}
+                inputRef={ref}
+                required
             />
-            {Icon && <Icon />}
+            {Icon && <Icon {...iconProps} />}
         </Box>
     )
 }

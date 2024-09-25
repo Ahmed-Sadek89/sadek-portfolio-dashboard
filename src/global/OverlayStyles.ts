@@ -32,6 +32,29 @@ export const textFiledStyle = {
     },
 }
 
+export const customProjectTextFiledStyle = {
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: 'text.primary', // default border color
+            color: "primary.main"
+        },
+        '&:hover fieldset': {
+            borderColor: 'text.primary', // border color when hovered
+        },
+        '&.Mui-focused fieldset': {
+            borderColor: 'text.primary', // border color when focused
+        },
+    },
+    '& .MuiInputLabel-root': {
+        color: 'text.secondary', // default label color
+    },
+    '& .MuiInputLabel-root.Mui-focused': {
+        color: 'text.primary', // label color when focused
+        fontWeight: "bold",
+    },
+    width: "100%",
+}
+
 export const btnsGroupStyle = {
     display: 'flex',
     flexDirection: "row",

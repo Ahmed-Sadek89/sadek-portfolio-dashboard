@@ -1,29 +1,37 @@
 import { Checkbox, FormControlLabel, Typography } from '@mui/material'
-import React from 'react'
-import { GetAsyncData } from '@/hooks/get-async-data';
-import { getCategorySkills } from '@/lib/getCategorySkills';
+import { categorySkill } from '@/types';
 
-const CategorySkillsMenu = () => {
-    const data = GetAsyncData(getCategorySkills);
+type props = {
+    name: string,
+    data: categorySkill[],
+    checkedCategories: number[],
+    handleCheckboxChange: (category: number) => (event: any) => void
+}
+
+const CategorySkillsMenu = ({ name, data, checkedCategories, handleCheckboxChange }: props) => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     return (
         <div className="flex flex-col gap-y-1">
-            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
+            <Typography variant='h6' sx={{ color: "text.primary" }}>
                 Category skills
             </Typography>
             <div className='flex flex-col'>
+                <input type="hidden" name={name} value={checkedCategories.join(',')} />
                 {
                     data.map((key, index) => (
+                       
                         <FormControlLabel
                             key={index}
-                            control={<Checkbox {...label} color='info' />}
-                            label={key.category_name}
+                            control={<Checkbox {...label} color='info'/>}
+                            checked={checkedCategories.includes(key.id)}
+                            onChange={handleCheckboxChange(key.id)}
                             sx={{
                                 ".MuiFormControlLabel-label": {
                                     color: "text.secondary",
                                 },
 
                             }}
+                            label={key.category_name}
                         />
 
                     ))

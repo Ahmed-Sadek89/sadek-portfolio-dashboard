@@ -1,151 +1,60 @@
 "use client"
-import { Box, Checkbox, FormControl, FormControlLabel, TextField, Typography } from '@mui/material'
-import GitHubIcon from '@mui/icons-material/GitHub';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import Link from 'next/link';
-import ProjectFormUploadImageInput from '@/components/ui/project-form-upload-image-input';
-import FormFocusInput from '@/components/ui/form-focus-input';
-import FormFocusTextarea from '@/components/ui/form-focus-textarea';
-import FormSelectInput from '@/components/ui/form-select-input';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { datePickerStyle, textFiledStyle } from '@/global/OverlayStyles';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { useState } from 'react';
-import dayjs from 'dayjs';
+import { Box } from '@mui/material'
 import CategoryProjectMenu from '@/components/CategoryProjectMenu/CategoryProjectMenu';
-import CategorySkillsMenu from '@/components/CategorySkillsMenu/CategorySkillsMenu';
+import ProjectSkillsData from '@/components/ProjectSkillsData/ProjectSkillsData';
+import ImageAndTitle from '@/components/ProjectFormComponents/ImageAndTitle';
+import Status from '@/components/ProjectFormComponents/Status';
+import DateComponent from '@/components/ProjectFormComponents/DateComponent';
+import Description from '@/components/ProjectFormComponents/Description';
+import ProjectLinksComponent from '@/components/ProjectFormComponents/ProjectLinksComponent';
+import Title from '@/components/ProjectFormComponents/Title';
+import { btnStyle } from '@/global/OverlayStyles';
+import ButtonSubmit from '@/components/ui/button-submit';
+
 
 const Page = () => {
-    const data = [
-        {
-            id: 1,
-            status: "completed",
-        },
-        {
-            id: 2,
-            status: "not completed",
-        }
-    ];
-    const [date, setDate] = useState()
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const handleSubmit = (formData: FormData) => {
+        // all are OK, send them to backend server
+        const attachment = formData.get("attachment")
+        const title = formData.get("title")
+        const description = formData.get("description")
+        const created_at = formData.get("created_at")
+        const ended_at = formData.get("ended_at")
+        const status = formData.get("status")
+        const category_project_id = formData.get("category_project_id")
+        const category_skills_id = formData.get("category_skills_id")
+        const skills_id = formData.get("skills_id")
+        const live_url = formData.get("live_url")
+        const repo_url = formData.get("repo_url")
+        console.log({attachment, title, description, created_at, ended_at, status, category_project_id, category_skills_id, skills_id,live_url,repo_url})
+    }
     return (
-        <Box component={'form'} className='flex flex-col gap-3'>
-            <div className='relative w-full'>
-                <ProjectFormUploadImageInput name="icon" />
-                <FormFocusInput
-                    containerStyle='absolute bottom-4 left-5 w-1/2'
-                    placeholder='Click to add Title'
-                    name="title"
-                />
-            </div>
-            <div className='flex items-start w-full justify-between flex-col sm:flex-row p-[26px]'>
-                <div className='flex flex-col gap-y-10 w-2/3'>
-
-                    <div className="flex flex-col gap-y-1">
-                        <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                            Description:
-                        </Typography>
-                        <FormFocusTextarea
-                            placeholder='Click to add description'
-                            name="description"
-                        />
-                    </div>
-                    <div className='flex flex-col gap-2'>
-                        <div className="flex items-center gap-x-3 w-full">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Status:
-                            </Typography>
-                            {/* <Typography variant='body1' className='p-2 rounded' sx={{ color: "text.primary", bgcolor: "success.main" }}>
-                                completed
-                            </Typography> */}
-                            <div className="w-1/2">
-                                <FormControl fullWidth>
-                                    <FormSelectInput label='Choose status' name='status' data={data} keyData="status" />
-                                </FormControl>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Started at:
-                            </Typography>
-                            <Box sx={{ width: { xs: "100%", sm: "auto" } }}>
-                                <LocalizationProvider dateAdapter={AdapterDayjs} name="created_at">
-                                    <DatePicker
-                                        label="Date"
-                                        value={date}
-                                        onChange={(newValue) => setDate(newValue as any)}
-                                        maxDate={dayjs()}
-                                        renderInput={(params) => <TextField name='date' {...params} sx={textFiledStyle} />}
-                                        PopperProps={{
-                                            sx: datePickerStyle,
-                                        }}
-                                    />
-                                </LocalizationProvider>
-                            </Box>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Ended at:
-                            </Typography>
-                            {/* <Typography variant='body1' className='italic' sx={{ color: "text.secondary" }}>
-                                Did not end yet!
-                            </Typography> */}
-                            <Box sx={{ width: { xs: "100%", sm: "auto" } }}>
-                                <LocalizationProvider dateAdapter={AdapterDayjs} name="created_at">
-                                    <DatePicker
-                                        label="Date"
-                                        value={date}
-                                        onChange={(newValue) => setDate(newValue as any)}
-                                        maxDate={dayjs()}
-                                        renderInput={(params) => <TextField name='date' {...params} sx={textFiledStyle} />}
-                                        PopperProps={{
-                                            sx: datePickerStyle,
-                                        }}
-                                    />
-                                </LocalizationProvider>
-                            </Box>
+        <Box component={'form'} className='flex flex-col gap-3' action={handleSubmit}>
+            <ImageAndTitle />
+            <div className='flex items-start w-full justify-between flex-col sm:flex-row p-[26px] gap-y-10'>
+                <div className='flex flex-col gap-y-10 w-full sm:w-2/3'>
+                    <Title />
+                    <Description />
+                    <div className='flex flex-col gap-y-10'>
+                        <Status />
+                        <div className='flex flex-col gap-y-5'>
+                            <DateComponent label="Started at:" name="created_at" />
+                            <DateComponent label="ended at:" name="ended_at" />
                         </div>
                     </div>
-                    <div className='flex flex-col gap-y-5'>
+                    <div className='flex flex-col gap-y-10'>
                         <CategoryProjectMenu />
-                        <CategorySkillsMenu />
-                        {/* customize skills  */}
-                        <div className="flex items-start gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Skills
-                            </Typography>
-                            <div className=' flex items-center gap-x-3 gap-y-2 flex-wrap'>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    React
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    TailwindCss
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Express.js
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    MongoDB
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Redux
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    TypeScript
-                                </Typography>
-                            </div>
-                        </div>
-                        {/* customize skills  */}
+                        <ProjectSkillsData />
                     </div>
                 </div>
-                <Box className="flex items-center justify-end gap-x-3 w-1/3">
-                    <Link href="#">
-                        <RemoveRedEyeIcon className='text-9xl transition duration-300' sx={{ color: "text.secondary", ":hover": { color: "text.primary" } }} />
-                    </Link>
-                    <Link href="#">
-                        <GitHubIcon className='text-9xl transition duration-300' sx={{ color: "text.secondary", ":hover": { color: "text.primary" } }} />
-                    </Link>
-                </Box>
+                <div className="flex flex-col gap-y-9 w-full sm:w-1/3 ">
+                    <ProjectLinksComponent />
+                    <ButtonSubmit
+                        btnStyle={{ bgcolor: "success.main", ":hover": { bgcolor: "#00d25b" }, ...btnStyle, width: "auto" }}
+                    >
+                        Add a new Project
+                    </ButtonSubmit>
+                </div>
             </div>
         </Box>
     )

@@ -44,7 +44,7 @@ const ProjectFormUploadImageInput = ({ name, defaultValue, imageUrl }: props) =>
                     id="image-upload"
                     type="file"
                     onChange={handleFileChange}
-                    name={name}
+                    required
                 />
                 <label htmlFor="image-upload" className='absolute bottom-2 right-5'>
                     <Button variant="contained" component="span" className='flex items-center gap-2'>
