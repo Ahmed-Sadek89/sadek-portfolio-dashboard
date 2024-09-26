@@ -1,125 +1,53 @@
-"use client"
-import { Box, Typography } from '@mui/material'
-import Image from 'next/image'
-import { useParams } from 'next/navigation'
-import GitHubIcon from '@mui/icons-material/GitHub';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import Link from 'next/link';
+import { Box } from '@mui/material'
+import { getProjectById } from '@/lib/getProjectById';
+import Header from '@/components/ProjectInfoComponent/Header';
+import ProjectNumber from '@/components/ProjectInfoComponent/ProjectNumber';
+import Description from '@/components/ProjectInfoComponent/Description';
+import Status from '@/components/ProjectInfoComponent/Status';
+import DateComponent from '@/components/ProjectInfoComponent/DateComponent';
+import CategoryProject from '@/components/ProjectInfoComponent/CategoryProject';
+import CategorySkills from '@/components/ProjectInfoComponent/CategorySkills';
+import Skills from '@/components/ProjectInfoComponent/Skills';
+import Links from '@/components/ProjectInfoComponent/Links';
+import BtnsControl from '@/components/ProjectInfoComponent/BtnsControl';
 
-const Page = () => {
-    const { id } = useParams()
+type props = {
+    params: {
+        id: string
+    }
+}
+
+const page = async ({ params }: props) => {
+    // ((((((((((((( DELETE EDIT project )))))))))))))
+    const projectById = await getProjectById(params.id.toString())
     return (
-        <Box className='flex flex-col gap-3'>
-            <div className='relative w-full h-[60vh]'>
-                <Image src="/logo.jpg" alt='title' width={1000} height={2000} className='object-fill w-full h-full' />
-                <Typography variant='h2' className='absolute bottom-2 left-5 capitalize font-bold' sx={{ color: "text.primary" }}>title</Typography>
-            </div>
-            <div className='flex items-start w-full justify-between flex-col sm:flex-row p-[26px]'>
-                <div className='flex flex-col gap-y-10 w-2/3'>
-                    <div className='flex flex-col gap-y-2'>
-                        <Typography variant='h4' className='' sx={{ color: "text.primary" }}>
-                            Project number: ${id}
-                        </Typography>
-                        <div className="flex flex-col gap-y-1">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Description:
-                            </Typography>
-                            <Typography variant='body1'  sx={{ color: "text.secondary" }}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab iste quae pariatur consectetur assumenda
-                                dicta iusto! Necessitatibus repellat possimus sed! Necessitatibus, debitis. Officiis quisquam cupiditate
-                                tempora eum assumenda dolor debitis.
-                            </Typography>
-                        </div>
-                    </div>
+        <Box className='flex flex-col gap-y-7'>
+            <Header attachment={projectById?.attachment as string} title={projectById?.title as string} />
+            <div className='flex items-start w-full justify-between flex-col sm:flex-row p-[26px] gap-y-6'>
+                <div className='flex flex-col gap-y-6 w-full md:w-2/3'>
+                    <ProjectNumber id={Number(params.id)} />
+                    <Description description={projectById?.description as string} />
+                    <Status status={projectById?.status as string} />
                     <div className='flex flex-col gap-2'>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Status:
-                            </Typography>
-                            <Typography variant='body1' className='p-2 rounded' sx={{ color: "text.primary", bgcolor: "success.main" }}>
-                                completed
-                            </Typography>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Started at:
-                            </Typography>
-                            <Typography variant='body1' sx={{ color: "text.secondary" }}>
-                                27/11/1999
-                            </Typography>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Ended at:
-                            </Typography>
-                            <Typography variant='body1' className='italic' sx={{ color: "text.secondary" }}>
-                                Did not end yet!
-                            </Typography>
-                        </div>
+                        <DateComponent label="Started at:" dateValue={projectById?.created_at as string} />
+                        <DateComponent label="Ended at:" dateValue={projectById?.ended_at as string} />
                     </div>
-                    <div className='flex flex-col gap-y-5'>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Category Project:
-                            </Typography>
-                            <Typography variant='body1' className='p-2 font-bold rounded transition duration-300 italic' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                Landing pages
-                            </Typography>
-                        </div>
-                        <div className="flex items-center gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Category skills
-                            </Typography>
-                            <div className=' flex items-start gap-x-3 gap-y-2 flex-wrap'>
-                                <Typography variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Frontend
-                                </Typography>
-                                <Typography variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Backend
-                                </Typography>
-                                <Typography variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Database
-                                </Typography>
-                            </div>
-                        </div>
-                        <div className="flex items-start gap-x-3">
-                            <Typography variant='h6' className='underline' sx={{ color: "text.primary" }}>
-                                Skills
-                            </Typography>
-                            <div className=' flex items-center gap-x-3 gap-y-2 flex-wrap'>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    React
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    TailwindCss
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Express.js
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    MongoDB
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    Redux
-                                </Typography>
-                                <Typography variant='body1' className='p-2 rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
-                                    TypeScript
-                                </Typography>
-                            </div>
-                        </div>
+                    <CategoryProject category_project_name={projectById?.category_project.name as string} />
+                    <div className='flex flex-col gap-y-2'>
+                        <CategorySkills categorySkills={projectById?.categorySkills as string[]} />
+                        <Skills skills={projectById?.skills as string[]} />
                     </div>
                 </div>
-                <Box className="flex items-center justify-end gap-x-3 w-1/3">
-                    <Link href="#">
-                        <RemoveRedEyeIcon className='text-9xl transition duration-300' sx={{ color: "text.secondary", ":hover": { color: "text.primary" } }} />
-                    </Link>
-                    <Link href="#">
-                        <GitHubIcon className='text-9xl transition duration-300' sx={{ color: "text.secondary", ":hover": { color: "text.primary" } }} />
-                    </Link>
-                </Box>
+                <div className='flex flex-col gap-y-4 w-full md:w-1/3 justify-end items-end'>
+                    <Links liveUrl={projectById?.live_url as string} repoUrl={projectById?.repo_url as string} />
+                    <BtnsControl />
+                </div>
             </div>
-        </Box>
+            <div className='flex flex-col gap-y-2 p-[26px]'>
+                Project Notes here ....
+            </div>
+        </Box >
     )
 }
 
-export default Page
+export default page

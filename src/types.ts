@@ -44,15 +44,21 @@ export type visitor = {
 export type project = {
     id: number;
     title: string;
-    description: string | null;
-    live_url: string | null;
-    repo_url: string | null;
+    description: string;
+    live_url: string;
+    repo_url: string;
     status: string;
-    created_at: Date;
-    ended_at: Date | null;
-    attachment: string | null;
-    category_project_id: number | null;
+    created_at: string;
+    ended_at: string | null;
+    attachment: string;
     awner_id: number;
+    category_project_name: string
+    category_project: {
+        id: number,
+        name: string
+    },
+    categorySkills: string[],
+    skills: string[]
 }
 
 
