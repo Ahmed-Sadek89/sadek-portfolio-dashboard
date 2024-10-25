@@ -1,7 +1,7 @@
 "use client"
-import { Button } from '@mui/material'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import DeleteProject from '../ProjectCard/DeleteProject'
 
 const BtnsControl = () => {
     const { id } = useParams()
@@ -13,9 +13,7 @@ const BtnsControl = () => {
             <Link href={`/project/edit/${id}`} className='bg-[#2196f3] text-white hover:opacity-90 transition duration-300 rounded px-[16px] py-[6px]'  >
                 Edit
             </Link>
-            <Button color='error' sx={{ bgcolor: "error", textTransform: "capitalize" }} variant='contained'>
-                Delete
-            </Button>
+            <DeleteProject projectId={Number(id)} />
         </div>
     )
 }

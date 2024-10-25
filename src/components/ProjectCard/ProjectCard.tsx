@@ -2,6 +2,7 @@ import { Box, Button, Grid, Typography } from '@mui/material'
 import Link from 'next/link'
 import Image from 'next/image';
 import { project } from '@/types';
+import DeleteProject from './DeleteProject';
 
 type props = {
     project: project,
@@ -25,9 +26,7 @@ const ProjectCard = ({ project }: props) => {
                         <Link href={`/project/edit/${project.id}`} className='bg-[#2196f3] text-white hover:opacity-90 transition duration-300 rounded px-[16px] py-[6px]'  >
                             Edit
                         </Link>
-                        <Button color='error' sx={{ bgcolor: "error", textTransform: "capitalize" }} variant='contained'>
-                            Delete
-                        </Button>
+                        <DeleteProject projectId={project.id} />
                     </div>
                 </div>
             </Box>

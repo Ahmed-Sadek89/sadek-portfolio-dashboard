@@ -9,7 +9,7 @@ const CategorySkills = ({ categorySkills }: { categorySkills: string[] }) => {
             </Typography>
             <div className=' flex items-start gap-x-3 gap-y-2 flex-wrap'>
                 {
-                    categorySkills.map((key, index) => (
+                    categorySkills?.map((key, index) => (
                         <Typography key={index} variant='body1' className='p-2 font-bold rounded transition duration-300' sx={{ color: "text.secondary", bgcolor: "primary.main", fontWeight: "bold", ":hover": { bgcolor: "text.secondary", color: "primary.main", } }}>
                             {key}
                         </Typography>

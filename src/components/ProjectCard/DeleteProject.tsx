@@ -1,33 +1,20 @@
 "use client"
 import React from 'react'
 import { Backdrop as backdrop, Box, Button, Fade, Modal } from '@mui/material'
+import RemoveOverlayContent from '../RemoveOverlayContent/RemoveOverlayContent';
+import HandleCloseModal from '@/hooks/handle-close-modal';
+import { useFormState } from 'react-dom';
+import { removeProject } from '@/actions/project/project-remove';
 
-type props = {
-    btnColor: "info" | "error" | "success",
-    btnVariant: "text" | "contained",
-    btnText: string,
-    param: any,
-    ContentOverlay: ({ param, handleClose }: any) => JSX.Element | JSX.Element
-}
-
-const ButtonModal = ({
-    btnColor,
-    btnVariant,
-    btnText,
-    param,
-    ContentOverlay
-}: props) => {
-
+const DeleteProject = ({ projectId }: { projectId: number }) => {
     const [open, setOpen] = React.useState(false);
 
+    const [state, formAction] = useFormState<any, FormData>(removeProject, undefined);
+    HandleCloseModal(state, () => setOpen(false))
     return (
         <>
-            <Button
-                color={btnColor}
-                onClick={() => setOpen(true)}
-                variant={btnVariant}
-            >
-                {btnText}
+            <Button color='error' sx={{ bgcolor: "error", textTransform: "capitalize" }} variant='contained' onClick={() => setOpen(true)}>
+                Delete
             </Button>
             <Modal
                 open={open}
@@ -49,7 +36,9 @@ const ButtonModal = ({
                             bgcolor: 'primary.main',
                             color: "text.primary",
                         }}>
-                        <ContentOverlay param={param} handleClose={() => setOpen(false)} />
+                        <form className='flex flex-col gap-3 text-center' action={formAction}>
+                            <RemoveOverlayContent id={projectId} modelName='Project' handleClose={() => setOpen(false)} />
+                        </form>
                     </Box>
                 </Fade>
             </Modal>
@@ -57,4 +46,4 @@ const ButtonModal = ({
     )
 }
 
-export default ButtonModal
+export default DeleteProject

@@ -10,6 +10,7 @@ import CategorySkills from '@/components/ProjectInfoComponent/CategorySkills';
 import Skills from '@/components/ProjectInfoComponent/Skills';
 import Links from '@/components/ProjectInfoComponent/Links';
 import BtnsControl from '@/components/ProjectInfoComponent/BtnsControl';
+import { redirect } from 'next/navigation';
 
 type props = {
     params: {
@@ -19,7 +20,10 @@ type props = {
 
 const page = async ({ params }: props) => {
     // ((((((((((((( DELETE EDIT project )))))))))))))
-    const projectById = await getProjectById(params.id.toString())
+    const projectById = await getProjectById(params.id)
+    if(!projectById?.id) {
+        redirect("/project")
+    }
     return (
         <Box className='flex flex-col gap-y-7'>
             <Header attachment={projectById?.attachment as string} title={projectById?.title as string} />
