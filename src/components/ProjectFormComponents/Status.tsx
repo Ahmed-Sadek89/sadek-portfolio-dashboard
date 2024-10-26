@@ -2,7 +2,7 @@ import { Typography } from '@mui/material'
 import React from 'react'
 import FormSelectInput from '../ui/form-select-input'
 
-const Status = () => {
+const Status = ({ defaultStatus }: { defaultStatus?: string }) => {
     const data = [
         {
             id: 1,
@@ -19,7 +19,7 @@ const Status = () => {
                 Status:
             </Typography>
             <div className="w-full flex items-end justify-end">
-                <FormSelectInput label='Choose status' name='status' data={data} keyData="status" />
+                <FormSelectInput label='Choose status' name='status' data={data} keyData="status" defaultValue={Number(defaultStatus)}/>
             </div>
         </div>
     )

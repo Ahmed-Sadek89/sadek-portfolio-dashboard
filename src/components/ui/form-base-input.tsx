@@ -12,9 +12,10 @@ type props = {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
     onBlur?: () => void,
     iconProps?: any,
-    isFocused?: boolean
+    isFocused?: boolean,
+    defaultValue?: string
 }
-const FormBaseInput = ({ isFocused, type, className, placeholder, name, Icon, value, onChange, onBlur, iconProps }: props) => {
+const FormBaseInput = ({ isFocused, type, className, placeholder, name, Icon, value, onChange, onBlur, iconProps, defaultValue }: props) => {
     const ref = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const FormBaseInput = ({ isFocused, type, className, placeholder, name, Icon, va
                 type={type}
                 inputRef={ref}
                 required
+                defaultValue={defaultValue}
             />
             {Icon && <Icon {...iconProps} />}
         </Box>

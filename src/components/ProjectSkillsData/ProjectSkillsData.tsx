@@ -17,7 +17,6 @@ const ProjectSkillsData = () => {
             setChoosedSkills(prev => [...prev, { id: skill.id, category_id: skill.category_id }])
         } else {
             setChoosedSkills((prev) => prev.filter((item) => item.id !== skill.id));
-
         }
     };
 
@@ -44,7 +43,6 @@ const ProjectSkillsData = () => {
     useEffect(() => {
         checkedCategories.map((index) => {
             const skillsBycatId = choosedSkills.find(skill => skill.category_id === index)
-            console.log({index, skillsBycatId})
             if (!skillsBycatId) {
                 setCheckedCategories((prev) => prev.filter((item) => item !== index));
                 setSkills((prev) => prev.filter((item) => item.category_id !== index));

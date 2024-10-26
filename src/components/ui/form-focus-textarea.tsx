@@ -5,8 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 type props = {
     name: string,
     placeholder?: string,
+    defaultDescription?: string
 }
-const FormFocusTextarea = ({ placeholder, name }: props) => {
+const FormFocusTextarea = ({ placeholder, name, defaultDescription }: props) => {
     const ref = useRef<HTMLTextAreaElement | null>(null);
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -15,7 +16,7 @@ const FormFocusTextarea = ({ placeholder, name }: props) => {
             ref.current.focus();
         }
     }, [isFocused]);
-    const [value, setValue] = useState<string>();
+    const [value, setValue] = useState<string>(defaultDescription || '');
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -34,7 +35,7 @@ const FormFocusTextarea = ({ placeholder, name }: props) => {
             {isFocused ? (
 
                 <textarea
-                    className="bg-white border-2 border-blue-700 text-black flex items-center justify-between gap-2 px-2 py-2 w-full outline-none h-[30vh]"
+                    className="bg-white border-2 border-blue-700 text-black flex items-center justify-between gap-2 px-2 py-2 w-full outline-none h-[22vh]"
                     placeholder={placeholder as string}
                     value={value}
                     onChange={handleChange}

@@ -7,9 +7,10 @@ type props = {
     name: string,
     containerStyle: string,
     placeholder?: string,
+    defaultTitle?: string,
 }
-const FormFocusInput = ({ containerStyle, placeholder, name }: props) => {
-    const [value, setValue] = useState<string>('');
+const FormFocusInput = ({ containerStyle, defaultTitle, placeholder, name }: props) => {
+    const [value, setValue] = useState<string>(defaultTitle || '');
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
 
@@ -26,7 +27,7 @@ const FormFocusInput = ({ containerStyle, placeholder, name }: props) => {
     };
     return (
         <div className={containerStyle}>
-            {(isFocused ) ? (
+            {(isFocused) ? (
 
                 <FormBaseInput
                     className="bg-white border-2 border-blue-700 text-black flex items-center justify-between rounded gap-2 px-2 py-2 w-full"

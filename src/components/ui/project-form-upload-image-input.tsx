@@ -3,21 +3,24 @@ import React, { useEffect } from 'react';
 import { Button, Typography } from '@mui/material'
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Image from 'next/image';
+import { convertImageNameToFile } from '@/helpers/convertImageNameToFile';
 
 type props = {
     name: string,
-    defaultValue?: File | null,
     imageUrl?: string
 }
 
-const ProjectFormUploadImageInput = ({ name, defaultValue, imageUrl }: props) => {
+const ProjectFormUploadImageInput = ({ name, imageUrl }: props) => {
     const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
-
     useEffect(() => {
-        if (defaultValue) {
-            setSelectedFile(defaultValue);
+        if (imageUrl) {
+            const handleFile = async () => {
+                const fileObject = await convertImageNameToFile(imageUrl)
+                setSelectedFile(fileObject)
+            }
+            handleFile()
         }
-    }, [defaultValue]);
+    }, [imageUrl]);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files ? event.target.files[0] : null;
@@ -29,7 +32,7 @@ const ProjectFormUploadImageInput = ({ name, defaultValue, imageUrl }: props) =>
             {
                 selectedFile ?
                     <Image
-                        src={imageUrl || URL.createObjectURL(selectedFile)}
+                        src={URL.createObjectURL(selectedFile)}
                         alt={selectedFile.name}
                         width={1000} height={2000}
                         className='object-fill w-full h-[60vh]'

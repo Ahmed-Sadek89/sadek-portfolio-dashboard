@@ -4,7 +4,11 @@ import FormBaseInput from '../ui/form-base-input'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
-const ProjectLinksComponent = () => {
+type props = {
+    defaultLiveURL?: string,
+    defaultRepoURL?: string
+}
+const ProjectLinksComponent = ({ defaultLiveURL, defaultRepoURL }: props) => {
     const iconProps = {
         className: 'text-9xl transition duration-300',
         sx: { color: "text.secondary", ":hover": { color: "text.primary" } }
@@ -13,12 +17,14 @@ const ProjectLinksComponent = () => {
         {
             placeholder: "Live URL",
             name: "live_url",
-            icon: RemoveRedEyeIcon
+            icon: RemoveRedEyeIcon,
+            defaultValue: defaultLiveURL
         },
         {
             placeholder: "Repo URL",
             name: "repo_url",
-            icon: GitHubIcon
+            icon: GitHubIcon,
+            defaultValue: defaultRepoURL
         }
     ]
     return (
@@ -33,6 +39,7 @@ const ProjectLinksComponent = () => {
                         name={link.name}
                         Icon={link.icon}
                         iconProps={iconProps}
+                        defaultValue={link.defaultValue}
                     />
                 ))
             }
