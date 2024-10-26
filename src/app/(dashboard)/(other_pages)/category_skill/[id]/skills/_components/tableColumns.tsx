@@ -1,9 +1,11 @@
 "use client"
+import { Typography } from '@mui/material';
 import {
     GridColDef,
     GridRenderCellParams
 } from '@mui/x-data-grid';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // disableColumnMenu: true // for menu :
 export const columns: GridColDef[] = [
@@ -17,5 +19,17 @@ export const columns: GridColDef[] = [
             )
         }
     },
-    { field: 'category_name', headerName: 'Category', width: 400, disableColumnMenu: true },
+    { field: 'category_name', headerName: 'Category', width: 200, disableColumnMenu: true },
+    {
+        field: 'related', headerName: 'Related', width: 200, disableColumnMenu: true,
+        renderCell: (params: GridRenderCellParams<any, any, any>) => {
+            return (
+                <Link href={`/skill/${params.row.id}/projects`}>
+                    <Typography bgcolor={'success.main'} className='p-2 rounded opacity-90 hover:opacity-100'>
+                        Projects
+                    </Typography>
+                </Link>
+            )
+        }
+    },
 ];

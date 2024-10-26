@@ -8,7 +8,7 @@ const Login = () => {
         <>
             <Box className="flex flex-col gap-1">
                 <Typography sx={{ color: "text.primary" }} variant="h6">
-                    Welcome to Dream! 👋
+                    Welcome to Ahmed Sadek | أْحْمَدْ صَادِقْ ! 👋
                 </Typography>
                 <Typography sx={{ color: "text.secondary" }}>
                     Please sign-in to your account and start the adventure

@@ -9,24 +9,6 @@ export const drawerContainer = {
     },
 }
 
-export const ListItemStyle = {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-between",
-    color: "text.primary"
-}
-
-export const mainLinkStyle = {
-    textTransform: "uppercase",
-    letterSpacing: "6px",
-    fontSize: "20px",
-    fontWeight: "bold",
-    display: "flex",
-    alignItems: "center",
-    gap: "20px"
-}
-
 export const ListItemIconStyle = {
     backgroundColor: "primary.dark",
     minWidth: "auto",

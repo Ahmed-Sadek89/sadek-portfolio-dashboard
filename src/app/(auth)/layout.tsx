@@ -2,7 +2,6 @@ import UserLayout from "@/components/UserLayout/UserLayout";
 import { getSession } from "@/lib/session";
 import { Box } from "@mui/material";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default async function RootLayout({
                 {/* <ThemeContextProvider> */}
                 <UserLayout>
                     <Box className="flex flex-col gap-3 w-full">
-                        <Image src={'/Logo.svg'} alt='logo' width={30} height={100} className='w-[10%] h-auto' />
                         {children}
                     </Box>
                 </UserLayout>
